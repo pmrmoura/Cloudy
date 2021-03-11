@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17557AF525FA64F6003697A6 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17557AF425FA64F6003697A6 /* TimerView.swift */; };
 		C105B9A125FA4AC200B9409A /* AddPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C105B9A025FA4AC200B9409A /* AddPauseView.swift */; };
 		C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2B73625FA59AD00B6D21A /* Pause.swift */; };
 		C1A8AB4925FA46C7003BEC5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A8AB4825FA46C7003BEC5B /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17557AF425FA64F6003697A6 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		C105B9A025FA4AC200B9409A /* AddPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPauseView.swift; sourceTree = "<group>"; };
 		C1A2B73625FA59AD00B6D21A /* Pause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
 		C1A8AB4525FA46C7003BEC5B /* Cloudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cloudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				C105B9A025FA4AC200B9409A /* AddPauseView.swift */,
+				17557AF425FA64F6003697A6 /* TimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17557AF525FA64F6003697A6 /* TimerView.swift in Sources */,
 				C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */,
 				C1A8AB4925FA46C7003BEC5B /* AppDelegate.swift in Sources */,
 				C1A8AB4B25FA46C7003BEC5B /* SceneDelegate.swift in Sources */,
