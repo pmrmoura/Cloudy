@@ -14,6 +14,7 @@ struct TimerView: View {
         
     @State var secondCurrent: Int = 0
     @State var minSelected: Int = 0
+    @State var didLaunchBefore: Bool = false
     
 
     var body: some View {
@@ -23,11 +24,11 @@ struct TimerView: View {
             
             Spacer()
 
-            if self.minSelected == 0  && self.secondCurrent == 0 {
-                    
+            if self.minSelected == 0  && self.secondCurrent == 0 && !didLaunchBefore {
+                
                 Picker("", selection: $minSelected){
              
-                    ForEach(1..<60, id: \.self) { i in
+                    ForEach(0..<60, id: \.self) { i in
                         Text("\(i) min").tag(i)
                     }
                 }
@@ -39,7 +40,7 @@ struct TimerView: View {
                 
             } else {
                 
-                TimerCountDown(minutes: $minSelected, seconds: $secondCurrent)
+                TimerCountDown(minutes: $minSelected, seconds: $secondCurrent, haveILaunched: $didLaunchBefore)
 
                 Spacer()
             }
@@ -59,6 +60,7 @@ struct TimerCountDown: View {
     
     @Binding var minutes: Int
     @Binding var seconds: Int
+    @Binding var haveILaunched: Bool
     @State var timerIsPaused: Bool = true
     @State var buttonName: String = "INICIAR"
     @State var timer: Timer? = nil
@@ -79,6 +81,7 @@ struct TimerCountDown: View {
                     if buttonName == "INICIAR" {
                         self.startTimer()
                         self.buttonName = "CONCLUIR"
+                        self.haveILaunched = true
                         
                     } else {
                         self.stopTimer()
@@ -112,7 +115,7 @@ struct TimerCountDown: View {
                 stopTimer()
             }
             
-            if self.seconds == 0 {
+           else if self.seconds == 0 {
                 self.seconds = 59
                 if self.minutes == 0 {
                     self.minutes = 59
