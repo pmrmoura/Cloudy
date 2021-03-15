@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C105B9A125FA4AC200B9409A /* AddPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C105B9A025FA4AC200B9409A /* AddPauseView.swift */; };
+		C13D66C725FB87BB00554903 /* AddPausePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D66C625FB87BB00554903 /* AddPausePopUp.swift */; };
 		C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2B73625FA59AD00B6D21A /* Pause.swift */; };
 		C1A8AB4925FA46C7003BEC5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A8AB4825FA46C7003BEC5B /* AppDelegate.swift */; };
 		C1A8AB4B25FA46C7003BEC5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A8AB4A25FA46C7003BEC5B /* SceneDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		C105B9A025FA4AC200B9409A /* AddPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPauseView.swift; sourceTree = "<group>"; };
+		C13D66C625FB87BB00554903 /* AddPausePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPausePopUp.swift; sourceTree = "<group>"; };
 		C1A2B73625FA59AD00B6D21A /* Pause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
 		C1A8AB4525FA46C7003BEC5B /* Cloudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cloudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A8AB4825FA46C7003BEC5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				C105B9A025FA4AC200B9409A /* AddPauseView.swift */,
+				C13D66C625FB87BB00554903 /* AddPausePopUp.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */,
+				C13D66C725FB87BB00554903 /* AddPausePopUp.swift in Sources */,
 				C1A8AB4925FA46C7003BEC5B /* AppDelegate.swift in Sources */,
 				C1A8AB4B25FA46C7003BEC5B /* SceneDelegate.swift in Sources */,
 				C1A8AB5025FA46C7003BEC5B /* Cloudy.xcdatamodeld in Sources */,

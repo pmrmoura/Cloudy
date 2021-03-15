@@ -9,26 +9,31 @@ import SwiftUI
 
 struct AddPauseView: View {
     var pauses: [Pause] = [Pause(name: "Pausa 1", image: "Cloud1")]
-
+    @State var isAddPausePopUpVisible: Bool = false
     var body: some View {
             VStack {
                 Header()
                 ScrollView {
                     LazyVStack {
                         Button {
-                            print("oi")
+                            print("nada")
                         } label : {
                             PauseItem(isButton: true, label: "Adicionar pausa")
                         }
                         
                         ForEach(pauses, id: \.id ) { pause in
-                            PauseItem(label: pause.name)
+                            Button {
+                                self.isAddPausePopUpVisible = !self.isAddPausePopUpVisible
+                            } label: {
+                                PauseItem(label: pause.name)
+                            }
                         }
                     }
                 }
-        
                 Spacer()
-            }
+            }.popover(isPresented: $isAddPausePopUpVisible, content: {
+                AddPausePopUp()
+            })
     }
 }
 
