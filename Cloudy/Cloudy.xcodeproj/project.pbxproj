@@ -14,6 +14,7 @@
 		C119F48E26002E120057C9D1 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F48D26002E120057C9D1 /* ModalView.swift */; };
 		C119F492260035100057C9D1 /* KeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F491260035100057C9D1 /* KeyboardHelper.swift */; };
 		C119F4962600EDFF0057C9D1 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F4952600EDFF0057C9D1 /* SheetView.swift */; };
+		C119F49D2600F48C0057C9D1 /* TimerSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F49C2600F48C0057C9D1 /* TimerSheetView.swift */; };
 		C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2B73625FA59AD00B6D21A /* Pause.swift */; };
 		C1A8AB4925FA46C7003BEC5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A8AB4825FA46C7003BEC5B /* AppDelegate.swift */; };
 		C1A8AB4B25FA46C7003BEC5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A8AB4A25FA46C7003BEC5B /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 		C119F48D26002E120057C9D1 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		C119F491260035100057C9D1 /* KeyboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHelper.swift; sourceTree = "<group>"; };
 		C119F4952600EDFF0057C9D1 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		C119F49C2600F48C0057C9D1 /* TimerSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSheetView.swift; sourceTree = "<group>"; };
 		C1A2B73625FA59AD00B6D21A /* Pause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
 		C1A8AB4525FA46C7003BEC5B /* Cloudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cloudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A8AB4825FA46C7003BEC5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				C105B9A025FA4AC200B9409A /* AddPauseView.swift */,
 				C119F4952600EDFF0057C9D1 /* SheetView.swift */,
+				C119F49C2600F48C0057C9D1 /* TimerSheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				C119F48826002DD00057C9D1 /* AnchorView.swift in Sources */,
 				C119F48B26002DEA0057C9D1 /* ModalManager.swift in Sources */,
 				C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */,
+				C119F49D2600F48C0057C9D1 /* TimerSheetView.swift in Sources */,
 				C119F48E26002E120057C9D1 /* ModalView.swift in Sources */,
 				C119F4962600EDFF0057C9D1 /* SheetView.swift in Sources */,
 				C119F492260035100057C9D1 /* KeyboardHelper.swift in Sources */,

@@ -12,7 +12,8 @@ struct AddPauseView: View {
 
     @State var text: String = ""
     @State var pauses: [Pause] = []
-
+    @State var showSheet: Bool = false
+    @State var selectedPause: Pause = Pause(name: "Default", image: "Cloud1")
     var body: some View {
         ZStack {
             VStack {
@@ -29,7 +30,8 @@ struct AddPauseView: View {
                         
                         ForEach(pauses, id: \.id ) { pause in
                             Button {
-                                print("xx")
+                                selectedPause = pause
+                                self.showSheet = true
                             } label: {
                                 PauseItem(label: pause.name)
                             }
@@ -37,7 +39,9 @@ struct AddPauseView: View {
                     }
                 }
                 Spacer()
-            }
+            }.sheet(isPresented: $showSheet, content: {
+                TimerView(pause: $selectedPause)
+            })
             ModalAnchorView()
         }
     }
@@ -88,8 +92,8 @@ struct PauseItem: View {
     }
 }
 
-struct AddPauseView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddPauseView()
-    }
-}
+//struct AddPauseView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddPauseView(selectedPause: Pause(name: "oi", image: "Cloud1"))
+//    }
+//}
