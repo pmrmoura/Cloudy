@@ -15,5 +15,4 @@ class ModalManager: ObservableObject {
     func closeModal() {
         modal.position = .closed
     }
-    
 }

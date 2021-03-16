@@ -11,7 +11,7 @@ struct AddPauseView: View {
     @EnvironmentObject var modalManager: ModalManager
 
     @State var text: String = ""
-    @State var pauses: [Pause] = [Pause(name: "Pausa 1", image: "Cloud1")]
+    @State var pauses: [Pause] = []
 
     var body: some View {
         ZStack {
@@ -39,68 +39,6 @@ struct AddPauseView: View {
                 Spacer()
             }
             ModalAnchorView()
-        }
-    }
-}
-
-
-struct SheetView: View {
-    @State var pauseName: String = ""
-    @Binding var pauses: [Pause]
-
-    @ObservedObject var keyboard = KeyboardResponder()
-    @EnvironmentObject var modalManager: ModalManager
-
-    var body: some View {
-        VStack(spacing: 0) {
-            VStack {
-                Spacer()
-                RoundedRectangle(cornerRadius: CGFloat(5.0/2))
-                    .frame(width: 40, height: 5)
-                    .foregroundColor(.white)
-                    .padding()
-                Spacer()
-            }.frame(height: 20)
-            Spacer()
-            VStack {
-                Text("O que você gostaria de fazer nessa pausa?")
-                    .font(Font.custom("AvenirNext-Regular", size: 22))
-                    .multilineTextAlignment(.center)
-                    .padding()
-                    .frame(width: 300)
-                
-                TextField("", text: $pauseName)
-                    .overlay(Rectangle()
-                                .frame(width: 250, height: 2)
-                                .padding(.top, 35)
-                                .foregroundColor(Color("TextFieldBorderColor"))
-                    )
-                    .frame(width: 250, height: 32)
-
-                HStack {
-                    Button {
-                        self.modalManager.closeModal()
-                    } label: {
-                        Text("Cancelar")
-                    }
-
-                    Button {
-                        if (pauseName != "") {
-                            pauses.append(Pause(name: pauseName, image: "Cloud1"))
-                            self.modalManager.closeModal()
-                            UIApplication.shared.endEditing()
-                        }
-                    } label: {
-                        Text("Adicionar")
-                    }
-                }
-                .padding(.top, 32)
-            }
-            .padding(.bottom, keyboard.currentHeight)
-            .edgesIgnoringSafeArea(.bottom)
-            .animation(.easeOut)
-            .cornerRadius(32.0)
-            Spacer()
         }
     }
 }

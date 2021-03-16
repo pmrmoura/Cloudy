@@ -27,6 +27,7 @@ struct ModalView: View {
                     .opacity(self.modal.position != .closed ? 0.5 : 0)
                     .onTapGesture {
                         self.modal.position = .closed
+                        UIApplication.shared.endEditing()
                     }
                 ZStack(alignment: .top) {
                     LinearGradient(gradient:
