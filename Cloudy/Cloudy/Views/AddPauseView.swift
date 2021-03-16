@@ -8,27 +8,38 @@
 import SwiftUI
 
 struct AddPauseView: View {
-    var pauses: [Pause] = [Pause(name: "Pausa 1", image: "Cloud1")]
+    @EnvironmentObject var modalManager: ModalManager
+
+    @State var text: String = ""
+    @State var pauses: [Pause] = []
 
     var body: some View {
+        ZStack {
             VStack {
                 Header()
                 ScrollView {
                     LazyVStack {
                         Button {
-                            print("oi")
+                            self.modalManager.newModal(position: .partiallyRevealed, content: {
+                                SheetView(pauses: $pauses)
+                            })
                         } label : {
                             PauseItem(isButton: true, label: "Adicionar pausa")
                         }
                         
                         ForEach(pauses, id: \.id ) { pause in
-                            PauseItem(label: pause.name)
+                            Button {
+                                print("xx")
+                            } label: {
+                                PauseItem(label: pause.name)
+                            }
                         }
                     }
                 }
-        
                 Spacer()
             }
+            ModalAnchorView()
+        }
     }
 }
 
