@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		C105B9A125FA4AC200B9409A /* AddPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C105B9A025FA4AC200B9409A /* AddPauseView.swift */; };
+		C119F48526002DAC0057C9D1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F48426002DAC0057C9D1 /* Model.swift */; };
+		C119F48826002DD00057C9D1 /* AnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F48726002DD00057C9D1 /* AnchorView.swift */; };
+		C119F48B26002DEA0057C9D1 /* ModalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F48A26002DEA0057C9D1 /* ModalManager.swift */; };
+		C119F48E26002E120057C9D1 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F48D26002E120057C9D1 /* ModalView.swift */; };
+		C119F492260035100057C9D1 /* KeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F491260035100057C9D1 /* KeyboardHelper.swift */; };
 		C13D66C725FB87BB00554903 /* AddPausePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D66C625FB87BB00554903 /* AddPausePopUp.swift */; };
 		C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2B73625FA59AD00B6D21A /* Pause.swift */; };
 		C1A8AB4925FA46C7003BEC5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A8AB4825FA46C7003BEC5B /* AppDelegate.swift */; };
@@ -20,6 +25,11 @@
 
 /* Begin PBXFileReference section */
 		C105B9A025FA4AC200B9409A /* AddPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPauseView.swift; sourceTree = "<group>"; };
+		C119F48426002DAC0057C9D1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		C119F48726002DD00057C9D1 /* AnchorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorView.swift; sourceTree = "<group>"; };
+		C119F48A26002DEA0057C9D1 /* ModalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalManager.swift; sourceTree = "<group>"; };
+		C119F48D26002E120057C9D1 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		C119F491260035100057C9D1 /* KeyboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHelper.swift; sourceTree = "<group>"; };
 		C13D66C625FB87BB00554903 /* AddPausePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPausePopUp.swift; sourceTree = "<group>"; };
 		C1A2B73625FA59AD00B6D21A /* Pause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
 		C1A8AB4525FA46C7003BEC5B /* Cloudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cloudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +62,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C119F48326002D910057C9D1 /* HalfModal */ = {
+			isa = PBXGroup;
+			children = (
+				C119F48426002DAC0057C9D1 /* Model.swift */,
+				C119F48726002DD00057C9D1 /* AnchorView.swift */,
+				C119F48A26002DEA0057C9D1 /* ModalManager.swift */,
+				C119F48D26002E120057C9D1 /* ModalView.swift */,
+				C119F491260035100057C9D1 /* KeyboardHelper.swift */,
+			);
+			path = HalfModal;
+			sourceTree = "<group>";
+		};
 		C1A2B73A25FA59BB00B6D21A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +101,7 @@
 		C1A8AB4725FA46C7003BEC5B /* Cloudy */ = {
 			isa = PBXGroup;
 			children = (
+				C119F48326002D910057C9D1 /* HalfModal */,
 				C1A2B73A25FA59BB00B6D21A /* Models */,
 				C105B9A325FA4AC700B9409A /* Views */,
 				C1A8AB4825FA46C7003BEC5B /* AppDelegate.swift */,
@@ -116,6 +139,8 @@
 			dependencies = (
 			);
 			name = Cloudy;
+			packageProductDependencies = (
+			);
 			productName = Cloudy;
 			productReference = C1A8AB4525FA46C7003BEC5B /* Cloudy.app */;
 			productType = "com.apple.product-type.application";
@@ -143,6 +168,8 @@
 				Base,
 			);
 			mainGroup = C1A8AB3C25FA46C7003BEC5B;
+			packageReferences = (
+			);
 			productRefGroup = C1A8AB4625FA46C7003BEC5B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -170,7 +197,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C119F48526002DAC0057C9D1 /* Model.swift in Sources */,
+				C119F48826002DD00057C9D1 /* AnchorView.swift in Sources */,
+				C119F48B26002DEA0057C9D1 /* ModalManager.swift in Sources */,
 				C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */,
+				C119F48E26002E120057C9D1 /* ModalView.swift in Sources */,
+				C119F492260035100057C9D1 /* KeyboardHelper.swift in Sources */,
 				C13D66C725FB87BB00554903 /* AddPausePopUp.swift in Sources */,
 				C1A8AB4925FA46C7003BEC5B /* AppDelegate.swift in Sources */,
 				C1A8AB4B25FA46C7003BEC5B /* SceneDelegate.swift in Sources */,
