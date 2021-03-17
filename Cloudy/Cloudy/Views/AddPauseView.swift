@@ -43,7 +43,19 @@ struct AddPauseView: View {
                 TimerView(pause: $selectedPause)
             })
             ModalAnchorView()
-        }
+        }.onAppear(perform: {
+            if let storedObject: Data = UserDefaults.standard.data(forKey: "pauses")
+                {
+                    do
+                    {
+                        pauses = try PropertyListDecoder().decode([Pause].self, from: storedObject)
+                    }
+                    catch
+                    {
+                        print(error.localizedDescription)
+                    }
+                }
+        })
     }
 }
 

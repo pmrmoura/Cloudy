@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Pause: Identifiable {
-    let id = UUID()
+struct Pause: Identifiable, Codable {
+    var id = UUID()
     var name: String
     var image: String
 }

@@ -34,7 +34,7 @@ struct TimerView: View {
                 }
                 .pickerStyle(WheelPickerStyle())
                 .padding(.top, 10)
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: 100, height: 100, alignment: .center)
                 
                 Spacer()
                 

@@ -39,10 +39,11 @@ struct SheetView: View {
                     .fixedSize(horizontal: false, vertical: true)
                 
                 TextField("", text: $pauseName)
-                    .overlay(Rectangle()
-                                .frame(width: 250, height: 2)
-                                .padding(.top, 35)
-                                .foregroundColor(Color("TextFieldBorderColor"))
+                    .overlay(
+                        Rectangle()
+                            .frame(width: 250, height: 2)
+                            .padding(.top, 35)
+                            .foregroundColor(Color("TextFieldBorderColor"))
                     )
                     .frame(width: 250, height: 32)
                     .disableAutocorrection(true)
@@ -54,6 +55,15 @@ struct SheetView: View {
                             self.pauseName = ""
                             self.modalManager.closeModal()
                             UIApplication.shared.endEditing()
+                            do
+                                {
+                                    UserDefaults.standard.set(try PropertyListEncoder().encode(pauses), forKey: "pauses")
+                                    UserDefaults.standard.synchronize()
+                                }
+                            catch
+                                {
+                                    print(error.localizedDescription)
+                                }
                         }
                     } label: {
                         Text("SALVAR")
