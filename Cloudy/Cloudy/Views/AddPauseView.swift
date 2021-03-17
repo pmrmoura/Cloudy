@@ -103,9 +103,3 @@ struct PauseItem: View {
         .padding(.horizontal, 52)
     }
 }
-
-//struct AddPauseView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddPauseView(selectedPause: Pause(name: "oi", image: "Cloud1"))
-//    }
-//}

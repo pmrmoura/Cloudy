@@ -22,7 +22,7 @@ struct TimerView: View {
     var body: some View {
         VStack {
             
-            HeaderTimerView(selectedPause: $pause, timerStarted: $didLaunchBefore)
+            HeaderTimerView(selectedPause: $pause, timerStarted: $didLaunchBefore, timeConfirmed: $timeConfirmed)
             
             Spacer()
 
@@ -65,6 +65,67 @@ struct TimerView: View {
    
         )
     }
+}
+
+struct HeaderTimerView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    @State var closeTimerView: Bool = false
+    @Binding var selectedPause: Pause
+    @Binding var timerStarted: Bool
+    @Binding var timeConfirmed: Bool
+    
+    var timerStartedText = "Pausa iniciada, fica a vontade para bloquear seu celular e enviaremos uma notificação quando acabar"
+    var timerNotStartedText = "Você gostaria de fazer uma pausa de quanto tempo?"
+
+    var body: some View {
+        
+        VStack{
+          
+            HStack {
+                
+                Spacer()
+                
+                Button(
+                    action: {
+                        self.closeTimerView.toggle()
+                        presentationMode.wrappedValue.dismiss()
+                    },
+                    label: {
+                        Image("bn-close")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: UIScreen.main.bounds.width*0.07, height: UIScreen.main.bounds.height*0.07)
+                    })
+                    .padding(.top, 50)
+
+            }//HStack
+            .padding(.trailing, 20)
+           
+            
+            
+            Text("\(selectedPause.name)")
+                .font(.custom("AvenirNext-Regular", size:30))
+                .foregroundColor(Color.black) //aqui pode pegar a cor do figma e colocar o nome
+                .padding(.leading, 40)
+                .padding(.bottom, 20)
+                .frame(width: UIScreen.main.bounds.width, alignment: .leading)
+            
+            Spacer()
+   
+            } //VStack
+            .frame(width: UIScreen.main.bounds.width, height: 105, alignment: .leading)
+                
+            
+        Text(timerStarted ? timerStartedText : (timeConfirmed ? "Seu tempo de pausa é" : timerNotStartedText))
+            .font(.custom("AvenirNext-Regular", size:17))
+            .foregroundColor(Color.black)
+            .multilineTextAlignment(.center)
+            .padding(.top,30)
+            .frame(width: UIScreen.main.bounds.width*0.60, alignment: .center)
+           
+    }
+    
 }
 
 struct TimerCountDown: View {
@@ -145,65 +206,5 @@ struct TimerCountDown: View {
         UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
         
     }
-}
-
-struct HeaderTimerView: View {
-    
-    @Environment(\.presentationMode) var presentationMode
-    @State var closeTimerView: Bool = false
-    @Binding var selectedPause: Pause
-    @Binding var timerStarted: Bool
-    
-    var timerStartedText = "Pausa iniciada, fica a vontade para bloquear seu celular e enviaremos uma notificação quando acabar"
-    var timerNotStartedText = "Você gostaria de fazer uma pausa de quanto tempo?"
-
-    var body: some View {
-        
-        VStack{
-          
-            HStack {
-                
-                Spacer()
-                
-                Button(
-                    action: {
-                        self.closeTimerView.toggle()
-                        presentationMode.wrappedValue.dismiss()
-                    },
-                    label: {
-                        Image("bn-close")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: UIScreen.main.bounds.width*0.07, height: UIScreen.main.bounds.height*0.07)
-                    })
-                    .padding(.top, 50)
-
-            }//HStack
-            .padding(.trailing, 20)
-           
-            
-            
-            Text("\(selectedPause.name)")
-                .font(.custom("AvenirNext-Regular", size:30))
-                .foregroundColor(Color.black) //aqui pode pegar a cor do figma e colocar o nome
-                .padding(.leading, 40)
-                .padding(.bottom, 20)
-                .frame(width: UIScreen.main.bounds.width, alignment: .leading)
-            
-            Spacer()
-   
-            } //VStack
-            .frame(width: UIScreen.main.bounds.width, height: 105, alignment: .leading)
-                
-            
-        Text(timerStarted ? timerStartedText : timerNotStartedText)
-            .font(.custom("AvenirNext-Regular", size:17))
-            .foregroundColor(Color.black)
-            .multilineTextAlignment(.center)
-            .padding(.top,30)
-            .frame(width: UIScreen.main.bounds.width*0.60, alignment: .center)
-           
-    }
-    
 }
 
