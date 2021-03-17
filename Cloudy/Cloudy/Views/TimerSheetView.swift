@@ -8,6 +8,7 @@
 import SwiftUI
 import Foundation
 import UIKit
+import UserNotifications
 
 
 struct TimerView: View {
@@ -15,33 +16,43 @@ struct TimerView: View {
     @State var secondCurrent: Int = 0
     @State var minSelected: Int = 0
     @State var didLaunchBefore: Bool = false
+    @State var timeConfirmed: Bool = false
     @Binding var pause: Pause
 
     var body: some View {
         VStack {
             
-            HeaderTimerView(selectedPause: $pause)
+            HeaderTimerView(selectedPause: $pause, timerStarted: $didLaunchBefore)
             
             Spacer()
 
-            if self.minSelected == 0  && self.secondCurrent == 0 && !didLaunchBefore {
+            if (!timeConfirmed && !didLaunchBefore) {
                 
                 Picker("", selection: $minSelected){
              
-                    ForEach(0..<60, id: \.self) { i in
+                    ForEach(1..<60, id: \.self) { i in
                         Text("\(i) min").tag(i)
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
                 .padding(.top, 10)
                 .frame(width: 100, height: 100, alignment: .center)
+                Spacer()
+                Button {
+                    self.timeConfirmed.toggle()
+                } label: {
+                    Text("Confirmar")
+                        .font(Font.custom("AvenirNext-Regular", size: 18))
+                        .frame(width: 110, height: 45)
+                        .foregroundColor(.white)
+                        .background(Color("ButtonColor"))
+                        .cornerRadius(32.0)
+                }
                 
                 Spacer()
                 
             } else {
-                
                 TimerCountDown(minutes: $minSelected, seconds: $secondCurrent, haveILaunched: $didLaunchBefore)
-
                 Spacer()
             }
             
@@ -60,10 +71,11 @@ struct TimerCountDown: View {
     
     @Binding var minutes: Int
     @Binding var seconds: Int
+    @State var start = false
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     @Binding var haveILaunched: Bool
-    @State var timerIsPaused: Bool = true
     @State var buttonName: String = "INICIAR"
-    @State var timer: Timer? = nil
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
@@ -72,21 +84,20 @@ struct TimerCountDown: View {
             Spacer()
             
             Text("\(minutes, specifier: "%02i"):\(seconds, specifier: "%02i")")
-                .bold()
+                .font(Font.custom("AvenirNext-Regular", size: 32))
             
             Spacer()
             
             Button(
                 action: {
                     if buttonName == "INICIAR" {
-                        self.startTimer()
+                        start.toggle()
                         self.buttonName = "CONCLUIR"
                         self.haveILaunched = true
                         
                     } else {
-                        self.stopTimer()
+                        self.start.toggle()
                         presentation.wrappedValue.dismiss()
-                       
                     }
                 },
                 label: {
@@ -100,60 +111,52 @@ struct TimerCountDown: View {
             )
             Spacer()
         }
-    }
-    
-
-    func startTimer(){
-        print("Entrou no start")
-        timerIsPaused = false
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ tempTimer in
-            
-            if self.seconds == 0 && self.minutes == 0 {
-                stopTimer()
-            }
-            
-           else if self.seconds == 0 {
-                self.seconds = 59
-                if self.minutes == 0 {
-                    self.minutes = 59
+        .onAppear(perform: {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) {(_, _) in }
+        })
+        .onReceive(timer, perform: { _ in
+            if (self.start) {
+                if (self.seconds == 0 && self.minutes == 0) {
+                    self.start.toggle()
+                    self.Notify()
+                } else if (self.seconds == 0) {
+                    self.seconds = 59
+                    if (self.minutes == 0) {
+                        self.minutes = 59
+                    } else {
+                        self.minutes -= 1
+                    }
                 } else {
-//                    if(self.minutes != 1){
-                        self.minutes = self.minutes - 1
-//                    }
+                    self.seconds -= 1
                 }
-            } else {
-                self.seconds = self.seconds - 1
             }
-        }
+        })
     }
     
-    func stopTimer(){
-        print("Entrou no stop")
-        timerIsPaused = true
-        timer?.invalidate()
-        timer = nil
-        self.minutes = 0
-        self.seconds = 0
+    func Notify() {
+        let content = UNMutableNotificationContent()
+        content.title = "Pausa concluida"
+        content.body = "Sua pausa foi concluida com sucesso"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        
+        let req = UNNotificationRequest(identifier: "MSG", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
         
     }
-    
 }
-
-
-struct Time {
-    var hour: Int
-    var minute: Int
-    var second: Int = 0
-}
-
 
 struct HeaderTimerView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @State var closeTimerView: Bool = false
     @Binding var selectedPause: Pause
-    //essa variavel sera do tipo binding recebendo da tela AddPauseView
+    @Binding var timerStarted: Bool
     
+    var timerStartedText = "Pausa iniciada, fica a vontade para bloquear seu celular e enviaremos uma notificação quando acabar"
+    var timerNotStartedText = "Você gostaria de fazer uma pausa de quanto tempo?"
+
     var body: some View {
         
         VStack{
@@ -193,7 +196,7 @@ struct HeaderTimerView: View {
             .frame(width: UIScreen.main.bounds.width, height: 105, alignment: .leading)
                 
             
-            Text("Você gostaria de fazer uma pausa de quanto tempo?")
+        Text(timerStarted ? timerStartedText : timerNotStartedText)
             .font(.custom("AvenirNext-Regular", size:17))
             .foregroundColor(Color.black)
             .multilineTextAlignment(.center)
@@ -204,8 +207,3 @@ struct HeaderTimerView: View {
     
 }
 
-//struct TimerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TimerView()
-//    }
-//}
