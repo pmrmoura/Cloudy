@@ -22,7 +22,7 @@ class TimerViewModel: ObservableObject {
         self.initialDate = Date()
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.handleTimerInBackground()
-            if (self.seconds <= 0 && self.minutes == 0) {
+            if (self.seconds <= 0 && self.minutes <= 0) {
                 self.timer.invalidate()
                 self.seconds = 0
                 self.minutes = 0
