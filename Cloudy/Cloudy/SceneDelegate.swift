@@ -8,8 +8,6 @@
 import UIKit
 import SwiftUI
 
-import PartialSheet
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

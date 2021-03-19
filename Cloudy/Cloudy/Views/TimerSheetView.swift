@@ -13,11 +13,12 @@ import UserNotifications
 
 struct TimerView: View {
         
-    @State var secondCurrent: Int = 0
-    @State var minSelected: Int = 0
+    @State var minSelected: Int = 1
     @State var didLaunchBefore: Bool = false
     @State var timeConfirmed: Bool = false
     @Binding var pause: Pause
+    
+    @ObservedObject var countDownTimer = TimerViewModel()
 
     var body: some View {
         VStack {
@@ -39,6 +40,7 @@ struct TimerView: View {
                 .frame(width: 100, height: 100, alignment: .center)
                 Spacer()
                 Button {
+                    self.countDownTimer.minutes = minSelected
                     self.timeConfirmed.toggle()
                 } label: {
                     Text("Confirmar")
@@ -52,7 +54,7 @@ struct TimerView: View {
                 Spacer()
                 
             } else {
-                TimerCountDown(minutes: $minSelected, seconds: $secondCurrent, haveILaunched: $didLaunchBefore)
+                TimerCountDown(countDownTimer: self.countDownTimer, haveILaunched: $didLaunchBefore)
                 Spacer()
             }
             
@@ -129,22 +131,25 @@ struct HeaderTimerView: View {
 }
 
 struct TimerCountDown: View {
-    
-    @Binding var minutes: Int
-    @Binding var seconds: Int
-    @State var start = false
-    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @ObservedObject var countDownTimer:TimerViewModel
 
     @Binding var haveILaunched: Bool
     @State var buttonName: String = "INICIAR"
     @Environment(\.presentationMode) var presentation
+    let notifications: Notifications
+    
+    init(countDownTimer:TimerViewModel, haveILaunched: Binding<Bool>) {
+        self.countDownTimer = countDownTimer
+        self._haveILaunched = haveILaunched
+        self.notifications = Notifications(initialMinutes: countDownTimer.minutes)
+    }
     
     var body: some View {
         VStack {
             
             Spacer()
             
-            Text("\(minutes, specifier: "%02i"):\(seconds, specifier: "%02i")")
+            Text("\(self.countDownTimer.minutes, specifier: "%02i"):\(self.countDownTimer.seconds, specifier: "%02i")")
                 .font(Font.custom("AvenirNext-Regular", size: 32))
             
             Spacer()
@@ -152,12 +157,14 @@ struct TimerCountDown: View {
             Button(
                 action: {
                     if buttonName == "INICIAR" {
-                        start.toggle()
+                        self.notifications.createNotification()
+                        self.countDownTimer.startTimer()
                         self.buttonName = "CONCLUIR"
                         self.haveILaunched = true
                         
                     } else {
-                        self.start.toggle()
+                        self.notifications.deleteNotification()
+                        self.countDownTimer.stopTimer()
                         presentation.wrappedValue.dismiss()
                     }
                 },
@@ -173,38 +180,8 @@ struct TimerCountDown: View {
             Spacer()
         }
         .onAppear(perform: {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) {(_, _) in }
+            self.notifications.notificationsPermission()
         })
-        .onReceive(timer, perform: { _ in
-            if (self.start) {
-                if (self.seconds == 0 && self.minutes == 0) {
-                    self.start.toggle()
-                    self.Notify()
-                } else if (self.seconds == 0) {
-                    self.seconds = 59
-                    if (self.minutes == 0) {
-                        self.minutes = 59
-                    } else {
-                        self.minutes -= 1
-                    }
-                } else {
-                    self.seconds -= 1
-                }
-            }
-        })
-    }
-    
-    func Notify() {
-        let content = UNMutableNotificationContent()
-        content.title = "Pausa concluida"
-        content.body = "Sua pausa foi concluida com sucesso"
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        
-        let req = UNNotificationRequest(identifier: "MSG", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(req, withCompletionHandler: nil)
-        
     }
 }
 
