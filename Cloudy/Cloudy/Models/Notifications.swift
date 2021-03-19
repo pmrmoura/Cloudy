@@ -15,7 +15,7 @@ struct Notifications {
         let content = UNMutableNotificationContent()
         content.title = "Pausa concluida"
         content.body = "Sua pausa foi concluida com sucesso"
-
+        content.sound = .default
         let triggerDate = Calendar.current.date(byAdding: .minute, value: initialMinutes, to: Date())
         let triggerDateComponents = Calendar.current.dateComponents([.weekday, .month, .year, .hour, .minute, .second], from: triggerDate!)
         let trigger = UNCalendarNotificationTrigger(

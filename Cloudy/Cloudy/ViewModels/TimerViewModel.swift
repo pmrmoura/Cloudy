@@ -22,8 +22,10 @@ class TimerViewModel: ObservableObject {
         self.initialDate = Date()
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.handleTimerInBackground()
-            if (self.seconds == 0 && self.minutes == 0) {
+            if (self.seconds <= 0 && self.minutes == 0) {
                 self.timer.invalidate()
+                self.seconds = 0
+                self.minutes = 0
             } else if (self.seconds == 0) {
                 self.seconds = 59
                 if (self.minutes == 0) {
@@ -62,8 +64,11 @@ class TimerViewModel: ObservableObject {
             
             let (minutes, seconds) = secondsToHoursMinutesSeconds(seconds: secondsPassedWhileInBackground)
     
-            self.minutes = minutes
-            self.seconds = seconds
+            if (self.seconds >= 0) {
+                print(self.seconds)
+                self.minutes = minutes
+                self.seconds = seconds
+            }
         
         @unknown default:
             print("Unknown state")
