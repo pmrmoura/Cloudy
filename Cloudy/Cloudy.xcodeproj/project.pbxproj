@@ -62,6 +62,7 @@
 		C105B9A325FA4AC700B9409A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C119F48326002D910057C9D1 /* HalfModal */,
 				C105B9A025FA4AC200B9409A /* AddPauseView.swift */,
 				C119F4952600EDFF0057C9D1 /* SheetView.swift */,
 				C119F49C2600F48C0057C9D1 /* TimerSheetView.swift */,
@@ -110,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				C1BE995626040B5A00326C8C /* ViewModels */,
-				C119F48326002D910057C9D1 /* HalfModal */,
 				C1A2B73A25FA59BB00B6D21A /* Models */,
 				C105B9A325FA4AC700B9409A /* Views */,
 				C1A8AB4825FA46C7003BEC5B /* AppDelegate.swift */,
