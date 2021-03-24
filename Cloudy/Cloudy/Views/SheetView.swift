@@ -51,19 +51,19 @@ struct SheetView: View {
                 VStack {
                     Button {
                         if (pauseName != "") {
-                            pauses.append(Pause(name: pauseName, image: "Cloud1"))
+//                            pauses.append(Pause(name: pauseName, image: "Cloud1"))
                             self.pauseName = ""
                             self.modalManager.closeModal()
                             UIApplication.shared.endEditing()
-                            do
-                                {
-                                    UserDefaults.standard.set(try PropertyListEncoder().encode(pauses), forKey: "pauses")
-                                    UserDefaults.standard.synchronize()
-                                }
-                            catch
-                                {
-                                    print(error.localizedDescription)
-                                }
+//                            do
+//                                {
+//                                    UserDefaults.standard.set(try PropertyListEncoder().encode(pauses), forKey: "pauses")
+//                                    UserDefaults.standard.synchronize()
+//                                }
+//                            catch
+//                                {
+//                                    print(error.localizedDescription)
+//                                }
                         }
                     } label: {
                         Text("SALVAR")

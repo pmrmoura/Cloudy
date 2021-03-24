@@ -11,9 +11,9 @@ struct AddPauseView: View {
     @EnvironmentObject var modalManager: ModalManager
 
     @State var text: String = ""
-    @State var pauses: [Pause] = []
+    @State var pauses: [PauseViewModel] = []
     @State var showSheet: Bool = false
-    @State var selectedPause: Pause = Pause(name: "Default", image: "Cloud1")
+    @State var selectedPause: PauseViewModel = PauseViewModel(id: UUID.init(), name: "Default", image: "Cloud1")
     var body: some View {
         ZStack {
             VStack {
@@ -22,7 +22,7 @@ struct AddPauseView: View {
                     LazyVStack {
                         Button {
                             self.modalManager.newModal(position: .partiallyRevealed, content: {
-                                SheetView(pauses: $pauses)
+//                                SheetView(pauses: $pauses)
                             })
                         } label : {
                             PauseItem(isButton: true, label: "Adicionar pausa")
@@ -40,21 +40,21 @@ struct AddPauseView: View {
                 }
                 Spacer()
             }.sheet(isPresented: $showSheet, content: {
-                TimerView(pause: $selectedPause)
+//                TimerView(pause: $selectedPause)
             })
             ModalAnchorView()
         }.onAppear(perform: {
-            if let storedObject: Data = UserDefaults.standard.data(forKey: "pauses")
-                {
-                    do
-                    {
-                        pauses = try PropertyListDecoder().decode([Pause].self, from: storedObject)
-                    }
-                    catch
-                    {
-                        print(error.localizedDescription)
-                    }
-                }
+//            if let storedObject: Data = UserDefaults.standard.data(forKey: "pauses")
+//                {
+//                    do
+//                    {
+//                        pauses = try PropertyListDecoder().decode([Pause].self, from: storedObject)
+//                    }
+//                    catch
+//                    {
+//                        print(error.localizedDescription)
+//                    }
+//                }
         })
     }
 }
