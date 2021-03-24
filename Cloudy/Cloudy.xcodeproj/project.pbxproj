@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		175835C2260B7BF400FF5A62 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175835C1260B7BF400FF5A62 /* DataManager.swift */; };
+		175835C6260B7D4400FF5A62 /* AddPauseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175835C5260B7D4400FF5A62 /* AddPauseViewModel.swift */; };
+		175835C9260B7D7200FF5A62 /* PauseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175835C8260B7D7200FF5A62 /* PauseViewModel.swift */; };
+		175835CC260B7E0800FF5A62 /* PauseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175835CB260B7E0800FF5A62 /* PauseListViewModel.swift */; };
 		C105B9A125FA4AC200B9409A /* AddPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C105B9A025FA4AC200B9409A /* AddPauseView.swift */; };
 		C119F48526002DAC0057C9D1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F48426002DAC0057C9D1 /* Model.swift */; };
 		C119F48826002DD00057C9D1 /* AnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F48726002DD00057C9D1 /* AnchorView.swift */; };
@@ -29,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		175835C1260B7BF400FF5A62 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		175835C5260B7D4400FF5A62 /* AddPauseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPauseViewModel.swift; sourceTree = "<group>"; };
+		175835C8260B7D7200FF5A62 /* PauseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewModel.swift; sourceTree = "<group>"; };
+		175835CB260B7E0800FF5A62 /* PauseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseListViewModel.swift; sourceTree = "<group>"; };
 		C105B9A025FA4AC200B9409A /* AddPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPauseView.swift; sourceTree = "<group>"; };
 		C119F48426002DAC0057C9D1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C119F48726002DD00057C9D1 /* AnchorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorView.swift; sourceTree = "<group>"; };
@@ -147,6 +153,9 @@
 			isa = PBXGroup;
 			children = (
 				C1BE995326040B4100326C8C /* TimerViewModel.swift */,
+				175835C5260B7D4400FF5A62 /* AddPauseViewModel.swift */,
+				175835C8260B7D7200FF5A62 /* PauseViewModel.swift */,
+				175835CB260B7E0800FF5A62 /* PauseListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -230,15 +239,18 @@
 				C119F48826002DD00057C9D1 /* AnchorView.swift in Sources */,
 				C119F48B26002DEA0057C9D1 /* ModalManager.swift in Sources */,
 				C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */,
+				175835C6260B7D4400FF5A62 /* AddPauseViewModel.swift in Sources */,
 				C119F49D2600F48C0057C9D1 /* TimerSheetView.swift in Sources */,
 				C1BE995126037D0F00326C8C /* Notifications.swift in Sources */,
 				C1BE995426040B4100326C8C /* TimerViewModel.swift in Sources */,
+				175835CC260B7E0800FF5A62 /* PauseListViewModel.swift in Sources */,
 				C119F48E26002E120057C9D1 /* ModalView.swift in Sources */,
 				C119F4962600EDFF0057C9D1 /* SheetView.swift in Sources */,
 				C119F492260035100057C9D1 /* KeyboardHelper.swift in Sources */,
 				C1A8AB4925FA46C7003BEC5B /* AppDelegate.swift in Sources */,
 				C1A8AB4B25FA46C7003BEC5B /* SceneDelegate.swift in Sources */,
 				C1A8AB5025FA46C7003BEC5B /* Cloudy.xcdatamodeld in Sources */,
+				175835C9260B7D7200FF5A62 /* PauseViewModel.swift in Sources */,
 				C105B9A125FA4AC200B9409A /* AddPauseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
