@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SheetView: View {
     @State var pauseName: String = ""
-    @Binding var pauses: [Pause]
+    @Binding var pauses: [PauseViewModel]
 
     @ObservedObject var keyboard = KeyboardResponder()
     @EnvironmentObject var modalManager: ModalManager

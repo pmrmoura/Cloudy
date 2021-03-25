@@ -22,7 +22,7 @@ struct AddPauseView: View {
                     LazyVStack {
                         Button {
                             self.modalManager.newModal(position: .partiallyRevealed, content: {
-//                                SheetView(pauses: $pauses)
+                                SheetView(pauses: $pauses)
                             })
                         } label : {
                             PauseItem(isButton: true, label: "Adicionar pausa")
