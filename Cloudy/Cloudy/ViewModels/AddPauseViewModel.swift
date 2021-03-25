@@ -14,7 +14,11 @@ class AddNewPauseViewModel { //diferencia da List, pois nao é observavel é um 
     
     func savePause(pause: PauseViewModel) {
         DataManager.shared.savePause(id: pause.id, name: pause.name, image: pause.image)
-    }
+    } 
+//
+//    func savePause(id: idPause, name: namePause, image: imagePause) {
+//        DataManager.shared.savePause(id: idPause, name: namePause, image: imagePause)
+//    }
 }
 
 

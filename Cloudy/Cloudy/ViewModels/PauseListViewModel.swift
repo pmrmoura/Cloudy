@@ -9,10 +9,10 @@ import SwiftUI
 import Combine
 
 class PauseListViewModel: ObservableObject {
-    @Published var pause = [PauseViewModel]()
+    @Published var pauses = [PauseViewModel]()
     
     func fetchAllPauses() {
-        self.pause = DataManager.shared.getPauses().map(PauseViewModel.init)
+        self.pauses = DataManager.shared.getPauses().map(PauseViewModel.init)
     }
     
     func updatePause(pause: PauseViewModel) {
@@ -20,7 +20,7 @@ class PauseListViewModel: ObservableObject {
     }
     
     func removePause(at index: Int) {
-        let p = pause[index]
+        let p = pauses[index]
         DataManager.shared.removePause(id: p.id)
     }
 }
