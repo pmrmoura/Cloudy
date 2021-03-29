@@ -26,12 +26,6 @@ struct AddPauseView: View {
                         Button {
                             self.modalManager.newModal(position: .partiallyRevealed, content: {
                                 SheetView(pauseListVM: self.pauseListVM)
-//                                SheetView(pauses: $pauses, onDisappearFlag: $onDisappearFlag)
-                                    .onDisappear(){
-                                        self.pauseListVM.fetchAllPauses()
-                                        print("desapareceu tela sheet")
-//                                        print(self.pauseListVM.pauses)
-                                    }
                             })
                         } label : {
                             PauseItem(isButton: true, label: "Adicionar pausa")
