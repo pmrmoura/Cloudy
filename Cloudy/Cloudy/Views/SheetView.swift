@@ -13,7 +13,6 @@ class AddNewPauseData: ObservableObject {
 }
 
 struct SheetView: View {
-//    @Published var pauseListVM = PauseListViewModel()
     
     @ObservedObject var newData = AddNewPauseData()
     private let viewModel = AddNewPauseViewModel()
