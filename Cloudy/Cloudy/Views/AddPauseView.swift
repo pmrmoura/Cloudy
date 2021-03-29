@@ -14,7 +14,7 @@ struct AddPauseView: View {
 
     @State var text: String = ""
 //    @State var onDisappearFlag: false
-    @State var pauses: [PauseViewModel] = []
+//    @State var pauses: [PauseViewModel] = []
     @State var showSheet: Bool = false
     @State var selectedPause: PauseViewModel = PauseViewModel(id: UUID.init(), name: "Default", image: "Cloud1")
     var body: some View {
@@ -25,7 +25,7 @@ struct AddPauseView: View {
                     LazyVStack { //isso pode ser problematico quando for deletar https://www.hackingwithswift.com/forums/swiftui/foreach-ondelete-is-not-working-with-lazyvstack/4847
                         Button {
                             self.modalManager.newModal(position: .partiallyRevealed, content: {
-                                SheetView(pauses: $pauses)
+                                SheetView(pauseListVM: self.pauseListVM)
 //                                SheetView(pauses: $pauses, onDisappearFlag: $onDisappearFlag)
                                     .onDisappear(){
                                         self.pauseListVM.fetchAllPauses()

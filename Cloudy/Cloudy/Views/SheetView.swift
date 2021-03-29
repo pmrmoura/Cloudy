@@ -20,7 +20,7 @@ struct SheetView: View {
     
     
     @State var pauseName: String = ""
-    @Binding var pauses: [PauseViewModel]
+    @ObservedObject var pauseListVM: PauseListViewModel
 
     @ObservedObject var keyboard = KeyboardResponder()
     @EnvironmentObject var modalManager: ModalManager
@@ -65,10 +65,7 @@ struct SheetView: View {
                             viewModel.savePause(pause: PauseViewModel(id: UUID(), name: self.pauseName, image: newData.image))
                             print("adicionou pausa na sheet")
                             print(DataManager.shared.getPauses())
-//                            \self.pauseListVM.fetchAllPauses()
-//                            lsita pause= DataManager.shared.getPauses().map(PauseViewModel.init)
-                            
-
+                            self.pauseListVM.fetchAllPauses()
                             self.pauseName = ""
                             self.modalManager.closeModal()
                             UIApplication.shared.endEditing()
