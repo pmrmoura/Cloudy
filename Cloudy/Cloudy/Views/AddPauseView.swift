@@ -21,32 +21,35 @@ struct AddPauseView: View {
         ZStack {
             VStack {
                 Header()
-                ScrollView {
-                    LazyVStack { //isso pode ser problematico quando for deletar https://www.hackingwithswift.com/forums/swiftui/foreach-ondelete-is-not-working-with-lazyvstack/4847
-                        Button {
+                List {
+                    Button (
+                        action: {
                             self.modalManager.newModal(position: .partiallyRevealed, content: {
                                 SheetView(pauseListVM: self.pauseListVM)
                             })
-                        } label : {
+                        },
+                        label: {
                             PauseItem(isButton: true, label: "Adicionar pausa")
-                        }
-                        
-                        ForEach(self.pauseListVM.pauses.indices, id: \.self ) { idx in
-                            Button {
+                        })
+                    
+                    
+                    ForEach(self.pauseListVM.pauses.indices, id: \.self ) { idx in
+                        Button (
+                            action: {
                                 selectedPause = self.pauseListVM.pauses[idx]
                                 self.showSheet = true
-                            } label: {
+                            },
+                            label: {
                                 PauseItem(label: self.pauseListVM.pauses[idx].name)
-                            }
-                        }
-//                        .onDelete(perform: delete)
-                    }
+                            })
+                        
+                    }.onDelete(perform: delete(at:))
                     
                 }
                 Spacer()
             }
             .sheet(isPresented: $showSheet, content: {
-//                TimerView(pause: $selectedPause)
+                TimerView(pause: $selectedPause)
             })
             
             ModalAnchorView()
@@ -57,12 +60,12 @@ struct AddPauseView: View {
         })
     }
 
-//    func delete(at offsets: IndexSet) {
-//        for index in offsets {
-//        self.pauseListVM.removePause(at: index)
-//    }
-//        self.pauseListVM.fetchAllPauses()
-//    }
+    func delete(at offsets: IndexSet) {
+        for index in offsets {
+        self.pauseListVM.removePause(at: index)
+    }
+        self.pauseListVM.fetchAllPauses()
+    }
 
 //    func OnAppear(_ animated: Bool) {
 //        super.viewWillAppear()
