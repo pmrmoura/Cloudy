@@ -10,7 +10,7 @@ import SwiftUI
 class TimerViewModel: ObservableObject {
     @Published var minutes: Int = 0
     @Published var seconds: Int = 0
-    
+
     var timer = Timer()
     
     var initialDate = Date()

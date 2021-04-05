@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Pause: Identifiable, Codable {
+struct PauseViewModel: Identifiable, Codable {
     var id = UUID()
     var name: String
     var image: String

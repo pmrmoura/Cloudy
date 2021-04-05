@@ -9,11 +9,12 @@ import SwiftUI
 
 struct AddPauseView: View {
     @EnvironmentObject var modalManager: ModalManager
+    @ObservedObject var viewModel: ViewModel = ViewModel()
 
     @State var text: String = ""
-    @State var pauses: [Pause] = []
+    @State var pauses: [PauseViewModel] = []
     @State var showSheet: Bool = false
-    @State var selectedPause: Pause = Pause(name: "Default", image: "Cloud1")
+    @State var selectedPause: PauseViewModel = PauseViewModel(name: "Default", image: "Cloud1")
     var body: some View {
         ZStack {
             VStack {
@@ -28,12 +29,12 @@ struct AddPauseView: View {
                             PauseItem(isButton: true, label: "Adicionar pausa")
                         }
                         
-                        ForEach(pauses, id: \.id ) { pause in
+                        ForEach(viewModel.dataSource, id: \.id ) { pause in
                             Button {
-                                selectedPause = pause
+                                selectedPause = PauseViewModel(name: pause.name!, image: pause.image!)
                                 self.showSheet = true
                             } label: {
-                                PauseItem(label: pause.name)
+                                PauseItem(label: pause.name!)
                             }
                         }
                     }
@@ -44,17 +45,7 @@ struct AddPauseView: View {
             })
             ModalAnchorView()
         }.onAppear(perform: {
-            if let storedObject: Data = UserDefaults.standard.data(forKey: "pauses")
-                {
-                    do
-                    {
-                        pauses = try PropertyListDecoder().decode([Pause].self, from: storedObject)
-                    }
-                    catch
-                    {
-                        print(error.localizedDescription)
-                    }
-                }
+            viewModel.initData()
         })
     }
 }

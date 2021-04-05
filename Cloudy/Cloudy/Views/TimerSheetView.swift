@@ -16,7 +16,7 @@ struct TimerView: View {
     @State var minSelected: Int = 1
     @State var didLaunchBefore: Bool = false
     @State var timeConfirmed: Bool = false
-    @Binding var pause: Pause
+    @Binding var pause: PauseViewModel
     
     @ObservedObject var countDownTimer = TimerViewModel()
 
@@ -73,7 +73,7 @@ struct HeaderTimerView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @State var closeTimerView: Bool = false
-    @Binding var selectedPause: Pause
+    @Binding var selectedPause: PauseViewModel
     @Binding var timerStarted: Bool
     @Binding var timeConfirmed: Bool
     
