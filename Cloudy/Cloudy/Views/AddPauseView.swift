@@ -31,6 +31,7 @@ struct AddPauseView: View {
                         label: {
                             PauseItem(isButton: true, label: "Adicionar pausa")
                         })
+                        .hideRowSeparator()
                     
                     
                     ForEach(self.pauseListVM.pauses.indices, id: \.self ) { idx in
@@ -42,10 +43,13 @@ struct AddPauseView: View {
                             label: {
                                 PauseItem(label: self.pauseListVM.pauses[idx].name)
                             })
+                            .hideRowSeparator()
                         
-                    }.onDelete(perform: delete(at:))
+                    }
                     
                 }
+            
+                
                 Spacer()
             }
             .sheet(isPresented: $showSheet, content: {
@@ -66,13 +70,9 @@ struct AddPauseView: View {
     }
         self.pauseListVM.fetchAllPauses()
     }
-
-//    func OnAppear(_ animated: Bool) {
-//        super.viewWillAppear()
-//        //Your Code Here...
-//    }
     
 }
+
 
 struct Header: View {
     var body: some View {
@@ -118,3 +118,42 @@ struct PauseItem: View {
         .padding(.horizontal, 52)
     }
 }
+
+//MARK: Sebosidade so para tirar o separador da List
+
+struct HideRowSeparatorModifier: ViewModifier {
+    static let defaultListRowHeight: CGFloat = 44
+    var insets: EdgeInsets
+    var background: Color
+    
+    init(insets: EdgeInsets, background: Color) {
+        self.insets = insets
+        var alpha: CGFloat = 0
+        UIColor(background).getWhite(nil, alpha: &alpha)
+        assert(alpha == 1, "Setting background to a non-opaque color will result in separators remaining visible.")
+        self.background = background
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(insets)
+            .frame(
+                minWidth: 0, maxWidth: .infinity,
+                minHeight: Self.defaultListRowHeight,
+                alignment: .leading
+            )
+            .listRowInsets(EdgeInsets())
+            .background(background)
+    }
+}
+
+extension EdgeInsets {
+    static let defaultListRowInsets = Self(top: 0, leading: UIScreen.main.bounds.width*0.09, bottom: UIScreen.main.bounds.width*0.03, trailing: 0)
+}
+
+extension View {
+    func hideRowSeparator(insets: EdgeInsets = .defaultListRowInsets, background: Color = .white) -> some View {
+        modifier(HideRowSeparatorModifier(insets: insets, background: background))
+    }
+}
+// fim Sebosidade
