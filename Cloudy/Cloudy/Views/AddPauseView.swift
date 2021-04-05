@@ -46,6 +46,7 @@ struct AddPauseView: View {
                             .hideRowSeparator()
                         
                     }
+                    .onDelete(perform: delete(at:))
                     
                 }
             
