@@ -5,11 +5,6 @@
 //  Created by Juliano Vaz on 07/04/21.
 //
 
-//
-//  FeelingView.swift
-//  App Onboarding
-//
-
 import SwiftUI
 
 struct FeelingView: View {
