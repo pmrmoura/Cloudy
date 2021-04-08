@@ -7,9 +7,19 @@
 
 import SwiftUI
 
+class AddNewPauseData: ObservableObject {
+    @Published var name: String = ""
+    @Published var image: String = "Cloud1"
+}
+
 struct SheetView: View {
+    
+    @ObservedObject var newData = AddNewPauseData()
+    private let viewModel = AddNewPauseViewModel()
+    
+    
     @State var pauseName: String = ""
-    @Binding var pauses: [Pause]
+    @ObservedObject var pauseListVM: PauseListViewModel
 
     @ObservedObject var keyboard = KeyboardResponder()
     @EnvironmentObject var modalManager: ModalManager
@@ -51,19 +61,14 @@ struct SheetView: View {
                 VStack {
                     Button {
                         if (pauseName != "") {
-                            pauses.append(Pause(name: pauseName, image: "Cloud1"))
+                            viewModel.savePause(pause: PauseViewModel(id: UUID(), name: self.pauseName, image: newData.image))
+                            print("adicionou pausa na sheet")
+                            print(DataManager.shared.getPauses())
+                            self.pauseListVM.fetchAllPauses()
                             self.pauseName = ""
                             self.modalManager.closeModal()
                             UIApplication.shared.endEditing()
-                            do
-                                {
-                                    UserDefaults.standard.set(try PropertyListEncoder().encode(pauses), forKey: "pauses")
-                                    UserDefaults.standard.synchronize()
-                                }
-                            catch
-                                {
-                                    print(error.localizedDescription)
-                                }
+
                         }
                     } label: {
                         Text("SALVAR")
@@ -93,4 +98,6 @@ struct SheetView: View {
             Spacer()
         }.cornerRadius(32.0)
     }
+    
+    
 }

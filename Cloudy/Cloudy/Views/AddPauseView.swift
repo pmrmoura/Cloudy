@@ -9,55 +9,71 @@ import SwiftUI
 
 struct AddPauseView: View {
     @EnvironmentObject var modalManager: ModalManager
+    @ObservedObject var pauseListVM = PauseListViewModel()
+    
 
     @State var text: String = ""
-    @State var pauses: [Pause] = []
+//    @State var onDisappearFlag: false
+//    @State var pauses: [PauseViewModel] = []
     @State var showSheet: Bool = false
-    @State var selectedPause: Pause = Pause(name: "Default", image: "Cloud1")
+    @State var selectedPause: PauseViewModel = PauseViewModel(id: UUID.init(), name: "Default", image: "Cloud1")
     var body: some View {
         ZStack {
             VStack {
                 Header()
-                ScrollView {
-                    LazyVStack {
-                        Button {
+                List {
+                    Button (
+                        action: {
                             self.modalManager.newModal(position: .partiallyRevealed, content: {
-                                SheetView(pauses: $pauses)
+                                SheetView(pauseListVM: self.pauseListVM)
                             })
-                        } label : {
+                        },
+                        label: {
                             PauseItem(isButton: true, label: "Adicionar pausa")
-                        }
-                        
-                        ForEach(pauses, id: \.id ) { pause in
-                            Button {
-                                selectedPause = pause
+                        })
+                        .hideRowSeparator()
+                    
+                    
+                    ForEach(self.pauseListVM.pauses.indices, id: \.self ) { idx in
+                        Button (
+                            action: {
+                                selectedPause = self.pauseListVM.pauses[idx]
                                 self.showSheet = true
-                            } label: {
-                                PauseItem(label: pause.name)
-                            }
-                        }
+                            },
+                            label: {
+                                PauseItem(label: self.pauseListVM.pauses[idx].name)
+                            })
+                            .hideRowSeparator()
+                        
                     }
+                    .onDelete(perform: delete(at:))
+                    
                 }
+            
+                
                 Spacer()
-            }.sheet(isPresented: $showSheet, content: {
+            }
+            .sheet(isPresented: $showSheet, content: {
                 TimerView(pause: $selectedPause)
             })
+            
             ModalAnchorView()
+            
         }.onAppear(perform: {
-            if let storedObject: Data = UserDefaults.standard.data(forKey: "pauses")
-                {
-                    do
-                    {
-                        pauses = try PropertyListDecoder().decode([Pause].self, from: storedObject)
-                    }
-                    catch
-                    {
-                        print(error.localizedDescription)
-                    }
-                }
+            self.pauseListVM.fetchAllPauses()
+            print("Rolou o onAppear")
         })
     }
+
+    func delete(at offsets: IndexSet) {
+        for index in offsets {
+        self.pauseListVM.removePause(at: index)
+    }
+        self.pauseListVM.fetchAllPauses()
+    }
+    
 }
+
 
 struct Header: View {
     var body: some View {
@@ -103,3 +119,42 @@ struct PauseItem: View {
         .padding(.horizontal, 52)
     }
 }
+
+//MARK: Sebosidade so para tirar o separador da List
+
+struct HideRowSeparatorModifier: ViewModifier {
+    static let defaultListRowHeight: CGFloat = 44
+    var insets: EdgeInsets
+    var background: Color
+    
+    init(insets: EdgeInsets, background: Color) {
+        self.insets = insets
+        var alpha: CGFloat = 0
+        UIColor(background).getWhite(nil, alpha: &alpha)
+        assert(alpha == 1, "Setting background to a non-opaque color will result in separators remaining visible.")
+        self.background = background
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(insets)
+            .frame(
+                minWidth: 0, maxWidth: .infinity,
+                minHeight: Self.defaultListRowHeight,
+                alignment: .leading
+            )
+            .listRowInsets(EdgeInsets())
+            .background(background)
+    }
+}
+
+extension EdgeInsets {
+    static let defaultListRowInsets = Self(top: 0, leading: UIScreen.main.bounds.width*0.09, bottom: UIScreen.main.bounds.width*0.03, trailing: 0)
+}
+
+extension View {
+    func hideRowSeparator(insets: EdgeInsets = .defaultListRowInsets, background: Color = .white) -> some View {
+        modifier(HideRowSeparatorModifier(insets: insets, background: background))
+    }
+}
+// fim Sebosidade
