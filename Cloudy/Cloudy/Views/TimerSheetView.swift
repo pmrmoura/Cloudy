@@ -71,17 +71,19 @@ struct TimerView: View {
 
 struct HeaderTimerView: View {
     
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode:  Binding<PresentationMode>
     @State var closeTimerView: Bool = false
     @Binding var selectedPause: PauseViewModel
     @Binding var timerStarted: Bool
     @Binding var timeConfirmed: Bool
     
+    @State var ConfirmedFeeling: Bool = false
+    
     var timerStartedText = "Pausa iniciada, fica a vontade para bloquear seu celular e enviaremos uma notificação quando acabar"
     var timerNotStartedText = "Você gostaria de fazer uma pausa de quanto tempo?"
 
     var body: some View {
-        
+   
         VStack{
           
             HStack {
@@ -137,7 +139,7 @@ struct TimerCountDown: View {
     @Binding var pauseList: PauseViewModel
     @Binding var haveILaunched: Bool
     @State var buttonName: String = "INICIAR"
-    @Environment(\.presentationMode) var presentation
+    @Environment(\.presentationMode) var presentationMode:  Binding<PresentationMode>
     let notifications: Notifications
     
     init(countDownTimer:TimerViewModel, haveILaunched: Binding<Bool>, pauseList: Binding<PauseViewModel>) {
@@ -174,7 +176,7 @@ struct TimerCountDown: View {
                     } else {
                         self.notifications.deleteNotification()
                         self.countDownTimer.stopTimer()
-                        presentation.wrappedValue.dismiss()
+                        self.presentationMode.wrappedValue.dismiss()
            
                     }
                 },

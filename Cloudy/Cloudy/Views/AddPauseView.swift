@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct AddPauseView: View {
+    
     @EnvironmentObject var modalManager: ModalManager
     @ObservedObject var pauseListVM = PauseListViewModel()
-    
 
     @State var text: String = ""
-//    @State var onDisappearFlag: false
-//    @State var pauses: [PauseViewModel] = []
     @State var showSheet: Bool = false
     @State var selectedPause: PauseViewModel = PauseViewModel(id: UUID.init(), name: "Default", image: "Cloud1")
+    
     var body: some View {
         ZStack {
             VStack {

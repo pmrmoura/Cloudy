@@ -10,8 +10,9 @@
     struct FeelingView: View {
         
     @State var showConfirmedFeelingView: Bool = false
-    @Environment(\.presentationMode) var presentation
+    @Environment(\.presentationMode) var presentationMode:  Binding<PresentationMode>
     @Binding var pause: PauseViewModel
+    @State var selectedFeeling: Int = 0
         
         var subviews = [
             UIHostingController(rootView: Subview(imageString: "energizado")),
@@ -81,8 +82,10 @@
                 
                 Button(
                     action: {
-//                            presentation.wrappedValue.dismiss()
                         self.showConfirmedFeelingView = true
+                        self.selectedFeeling =  self.currentPageIndex
+
+                        
                     },
                     label: {
                         Text("OK")
@@ -95,7 +98,7 @@
                     }
                 )
                 .sheet(isPresented: $showConfirmedFeelingView) {
-                    ConfirmedFeelingView(pauseList: $pause)
+                    ConfirmedFeelingView(selectedPause: $pause, selectedFeeling: $selectedFeeling)
                 }
       
                 
@@ -127,7 +130,7 @@
     struct HeaderFeelingView: View {
         
         @Environment(\.presentationMode) var presentationMode
-        @State var closeTimerView: Bool = false
+        @State var closeFeelingView: Bool = false
         @Binding var selectedPause: PauseViewModel
     
         
@@ -141,7 +144,7 @@
                     
                     Button(
                         action: {
-                            self.closeTimerView.toggle()
+                            self.closeFeelingView.toggle()
                             presentationMode.wrappedValue.dismiss()
                         },
                         label: {
