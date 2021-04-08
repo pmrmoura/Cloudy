@@ -75,8 +75,8 @@ struct ConfirmedFeelingView: View {
                     Text("OK")
                         .font(Font.custom("AvenirNext-Regular", size: 18))
                         .frame(width: 110, height: 45)
-                        .foregroundColor(.white)
-                        .background(Color("ButtonColor"))
+                        .foregroundColor(.black)
+                        .background(Image("bg-button"))
                         .cornerRadius(32.0)
                         .padding(.bottom, 70)
                 }

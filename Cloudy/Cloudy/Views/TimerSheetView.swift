@@ -46,8 +46,8 @@ struct TimerView: View {
                     Text("Confirmar")
                         .font(Font.custom("AvenirNext-Regular", size: 18))
                         .frame(width: 110, height: 45)
-                        .foregroundColor(.white)
-                        .background(Color("ButtonColor"))
+                        .foregroundColor(.black)
+                        .background(Image("bg-button"))
                         .cornerRadius(32.0)
                 }
                 
@@ -184,8 +184,8 @@ struct TimerCountDown: View {
                     Text(buttonName)
                         .font(Font.custom("AvenirNext-Regular", size: 18))
                         .frame(width: 110, height: 45)
-                        .foregroundColor(.white)
-                        .background(Color("ButtonColor"))
+                        .foregroundColor(.black)
+                        .background(Image("bg-button"))
                         .cornerRadius(32.0)
                 }
             )

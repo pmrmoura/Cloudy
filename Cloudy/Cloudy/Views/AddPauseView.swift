@@ -14,7 +14,7 @@ struct AddPauseView: View {
 
     @State var text: String = ""
     @State var showSheet: Bool = false
-    @State var selectedPause: PauseViewModel = PauseViewModel(id: UUID.init(), name: "Default", image: "Cloud1")
+    @State var selectedPause: PauseViewModel = PauseViewModel(id: UUID.init(), name: "Default", image: "01")
     
     var body: some View {
         ZStack {
@@ -99,10 +99,14 @@ struct Header: View {
 struct PauseItem: View {
     var isButton: Bool = false
     var label: String
+    var bgs = ["01","02","03","04"]
+    
     var body: some View {
         ZStack {
-            Image("Cloud1")
-                .opacity(isButton ? 0.6 : 1)
+            Image(bgs[Int.random(in: 0..<3)])
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+            
             VStack {
                 Spacer()
                 HStack {

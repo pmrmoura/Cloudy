@@ -91,8 +91,8 @@
                         Text("OK")
                             .font(Font.custom("AvenirNext-Regular", size: 18))
                             .frame(width: 110, height: 45)
-                            .foregroundColor(.white)
-                            .background(Color("ButtonColor"))
+                            .foregroundColor(.black)
+                            .background(Image("bg-button"))
                             .cornerRadius(32.0)
                             .padding(.bottom, 70)
                     }
@@ -120,7 +120,7 @@
         var body: some View {
             Image(iconName)
                 .resizable()
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .frame(width: 35, height: 35)
                 .padding()
         }
