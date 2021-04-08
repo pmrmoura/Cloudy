@@ -17,7 +17,7 @@ struct Subview: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .clipped()
-            .padding(UIScreen.main.bounds.width*0.15)
+            .padding(UIScreen.main.bounds.width*0.1)
     }
 }
 

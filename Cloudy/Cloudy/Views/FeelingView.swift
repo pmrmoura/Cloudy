@@ -1,92 +1,190 @@
-//
-//  FeelingView.swift
-//  Cloudy
-//
-//  Created by Juliano Vaz on 07/04/21.
-//
+    //
+    //  FeelingView.swift
+    //  Cloudy
+    //
+    //  Created by Juliano Vaz on 07/04/21.
+    //
 
-import SwiftUI
+    import SwiftUI
 
-struct FeelingView: View {
-    
-    var subviews = [
-        UIHostingController(rootView: Subview(imageString: "energizado")),
-        UIHostingController(rootView: Subview(imageString: "okay")),
-        UIHostingController(rootView: Subview(imageString: "cansado"))
-    ]
-    
-    var titles = ["energizado", "okay", "cansado"]
-    
-    var captions =  ["Take your time out and bring awareness into your everyday life", "Meditating helps you dealing with anxiety and other psychic problems", "Regular medidation sessions creates a peaceful inner mind"]
-    
-    @State var currentPageIndex = 0
-    @State var touchedButton = false
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            PageViewController(currentPageIndex: $currentPageIndex, touchRight: $touchedButton, viewControllers: subviews)
-                .frame(height: 600)
-            Group {
-                Text(titles[currentPageIndex])
-                    .font(.title)
-                Text(captions[currentPageIndex])
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                    .frame(width: 300, height: 50, alignment: .leading)
-                    .lineLimit(nil)
-            }
-            .padding()
-            HStack {
-                PageControl(numberOfPages: subviews.count, currentPageIndex: $currentPageIndex)
-                Spacer()
-                Button(action: {
-                    self.touchedButton = true
-                    if self.currentPageIndex+1 == self.subviews.count {
-                        self.currentPageIndex = 0
-                    } else {
-                        self.currentPageIndex += 1
-                    }
-                }) {
-                    ButtonContent(iconName: "arrow.right")
-                }
+    struct FeelingView: View {
+        
+    @State var showConfirmedFeelingView: Bool = false
+    @Environment(\.presentationMode) var presentation
+    @Binding var pause: PauseViewModel
+        
+        var subviews = [
+            UIHostingController(rootView: Subview(imageString: "energizado")),
+            UIHostingController(rootView: Subview(imageString: "okay")),
+            UIHostingController(rootView: Subview(imageString: "cansado"))
+        ]
+        var titles = ["energizado", "okay", "cansado"]
+        
+        @State var currentPageIndex = 0
+        @State var touchedButton = false
+        
+        var body: some View {
+            VStack(alignment: .center) {
                 
-                Button(action: {
-                    self.touchedButton = false
-                        if self.currentPageIndex-1 == -1 {
-                            self.currentPageIndex = 2
-                        } else {
-                            self.currentPageIndex -= 1
+                HeaderFeelingView(selectedPause: $pause)
+                
+                Spacer()
+                
+                HStack{
+                        Button(action: {
+                            self.touchedButton = true
+                            if self.currentPageIndex+1 == self.subviews.count {
+                                self.currentPageIndex = 0
+                            } else {
+                                self.currentPageIndex += 1
+                            }
+                        }) {
+                            ButtonContent(iconName: "arrowLeft")
                         }
-//                    }
-                      
-                }) {
-                    ButtonContent(iconName: "arrow.left")
+                    
+                    VStack{
+                        
+                        Spacer()
+                        
+                        PageViewController(currentPageIndex: $currentPageIndex, touchRight: $touchedButton, viewControllers: subviews)
+                            .frame(height: UIScreen.main.bounds.height*0.2)
+
+
+                        
+                        Group {
+                            Text(titles[currentPageIndex])
+                                .font(Font.custom("AvenirNext-Regular", size: 20))
+                                .frame(width: 140, height: 45)
+                                .foregroundColor(.black)
+                                .cornerRadius(32.0)
+                        }
+                        .padding()
+                        
+                        Spacer()
+                        
+                    }
+                    
+                    Button(action: {
+                        self.touchedButton = false
+                            if self.currentPageIndex-1 == -1 {
+                                self.currentPageIndex = 2
+                            } else {
+                                self.currentPageIndex -= 1
+                            }
+
+                    }) {
+                        ButtonContent(iconName: "arrowRight")
+                    }
                 }
+                .padding()
+                
+                
+                Button(
+                    action: {
+//                            presentation.wrappedValue.dismiss()
+                        self.showConfirmedFeelingView = true
+                    },
+                    label: {
+                        Text("OK")
+                            .font(Font.custom("AvenirNext-Regular", size: 18))
+                            .frame(width: 110, height: 45)
+                            .foregroundColor(.white)
+                            .background(Color("ButtonColor"))
+                            .cornerRadius(32.0)
+                            .padding(.bottom, 70)
+                    }
+                )
+                .sheet(isPresented: $showConfirmedFeelingView) {
+                    ConfirmedFeelingView(pauseList: $pause)
+                }
+      
+                
             }
-            .padding()
+            .background( //VStack
+                Image("bg-clouds")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.top)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            )
         }
     }
-}
 
-struct ButtonContent: View {
-    
-     var iconName:String
-    
-    var body: some View {
-        Image(systemName: iconName)
-            .resizable()
-            .foregroundColor(.white)
-            .frame(width: 30, height: 30)
-            .padding()
-            .background(Color.orange)
-            .cornerRadius(30)
+    struct ButtonContent: View {
+        
+         var iconName:String
+        
+        var body: some View {
+            Image(iconName)
+                .resizable()
+                .foregroundColor(.white)
+                .frame(width: 35, height: 35)
+                .padding()
+        }
     }
-}
+    
+    
+    struct HeaderFeelingView: View {
+        
+        @Environment(\.presentationMode) var presentationMode
+        @State var closeTimerView: Bool = false
+        @Binding var selectedPause: PauseViewModel
+    
+        
+        var body: some View {
+            
+            VStack{
+                
+                HStack {
+                    
+                    Spacer()
+                    
+                    Button(
+                        action: {
+                            self.closeTimerView.toggle()
+                            presentationMode.wrappedValue.dismiss()
+                        },
+                        label: {
+                            Image("bn-close")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: UIScreen.main.bounds.width*0.07, height: UIScreen.main.bounds.height*0.07)
+                        })
+                        .padding(.top, 70)
+                    
+                }//HStack
+                .padding(.trailing, 20)
+                
+                
+                
+                Text("\(selectedPause.name)")
+                    .font(.custom("AvenirNext-Regular", size:30))
+                    .foregroundColor(Color.black) //aqui pode pegar a cor do figma e colocar o nome
+                    .padding(.leading, 40)
+                    .padding(.bottom, 20)
+                    .frame(width: UIScreen.main.bounds.width, alignment: .leading)
+                
+                Text("Como você se sente depois desta pausa?")
+                    .font(.custom("AvenirNext-Regular", size:17))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color.black)
+//                    .padding(.top,30)
+//                    .frame(width: UIScreen.main.bounds.width*0.60, alignment: .center)
+                
+                Spacer()
+                
+            } //VStack
+            .frame(width: UIScreen.main.bounds.width, height: 105, alignment: .leading)
+            
+                    
+        }
+        
+    }
 
-#if DEBUG
-struct FeelingView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeelingView()
-    }
-}
-#endif
+    #if DEBUG
+//    struct FeelingView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            FeelingView()
+//        }
+//    }
+    #endif

@@ -54,7 +54,7 @@ struct TimerView: View {
                 Spacer()
                 
             } else {
-                TimerCountDown(countDownTimer: self.countDownTimer, haveILaunched: $didLaunchBefore)
+                TimerCountDown(countDownTimer: self.countDownTimer, haveILaunched: $didLaunchBefore, pauseList: $pause)
                 Spacer()
             }
             
@@ -131,17 +131,21 @@ struct HeaderTimerView: View {
 }
 
 struct TimerCountDown: View {
+    
+    @State private var showFeelingView = false
     @ObservedObject var countDownTimer:TimerViewModel
-
+    @Binding var pauseList: PauseViewModel
     @Binding var haveILaunched: Bool
     @State var buttonName: String = "INICIAR"
     @Environment(\.presentationMode) var presentation
     let notifications: Notifications
     
-    init(countDownTimer:TimerViewModel, haveILaunched: Binding<Bool>) {
+    init(countDownTimer:TimerViewModel, haveILaunched: Binding<Bool>, pauseList: Binding<PauseViewModel>) {
         self.countDownTimer = countDownTimer
         self._haveILaunched = haveILaunched
+        self._pauseList = pauseList
         self.notifications = Notifications(initialMinutes: countDownTimer.minutes)
+
     }
     
     var body: some View {
@@ -162,10 +166,16 @@ struct TimerCountDown: View {
                         self.buttonName = "CONCLUIR"
                         self.haveILaunched = true
                         
+                    } else if buttonName == "CONCLUIR"{
+                        self.notifications.deleteNotification()
+                        self.countDownTimer.stopTimer()
+                        self.showFeelingView = true
+                        
                     } else {
                         self.notifications.deleteNotification()
                         self.countDownTimer.stopTimer()
                         presentation.wrappedValue.dismiss()
+           
                     }
                 },
                 label: {
@@ -177,6 +187,8 @@ struct TimerCountDown: View {
                         .cornerRadius(32.0)
                 }
             )
+            .sheet(isPresented: $showFeelingView) {FeelingView(pause: $pauseList)}
+            
             Spacer()
         }
         .onAppear(perform: {

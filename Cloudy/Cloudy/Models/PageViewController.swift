@@ -20,13 +20,24 @@ struct PageViewController: UIViewControllerRepresentable {
         Coordinator(self)
     }
     
+    func getOpacityBackground(){
+        for viewController in viewControllers {
+            viewController.view.backgroundColor = .clear
+        }
+    }
+
+    
     func makeUIViewController(context: Context) -> UIPageViewController {
         let pageViewController = UIPageViewController(
             transitionStyle: .scroll,
             navigationOrientation: .horizontal)
         
+        self.getOpacityBackground()
+        
+        
         pageViewController.dataSource = context.coordinator
         pageViewController.delegate = context.coordinator
+        
         
         return pageViewController
     }
