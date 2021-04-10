@@ -12,12 +12,13 @@
     @State var showConfirmedFeelingView: Bool = false
     @Environment(\.presentationMode) var presentationMode:  Binding<PresentationMode>
     @Binding var pause: PauseViewModel
-    @State var selectedFeeling: Int = 0
+    @Binding var selectedFeeling: Int
+    @Binding var currentScreen: String
         
         var subviews = [
             UIHostingController(rootView: Subview(imageString: "energizado")),
-            UIHostingController(rootView: Subview(imageString: "okay")),
-            UIHostingController(rootView: Subview(imageString: "cansado"))
+            UIHostingController(rootView: Subview(imageString: "energizado")), //okay
+            UIHostingController(rootView: Subview(imageString: "energizado")) //cansado
         ]
         var titles = ["energizado", "okay", "cansado"]
         
@@ -55,6 +56,7 @@
                         Group {
                             Text(titles[currentPageIndex])
                                 .font(Font.custom("AvenirNext-Regular", size: 20))
+                                .fontWeight(.semibold)
                                 .frame(width: 140, height: 45)
                                 .foregroundColor(.black)
                                 .cornerRadius(32.0)
@@ -82,7 +84,7 @@
                 
                 Button(
                     action: {
-                        self.showConfirmedFeelingView = true
+                        self.currentScreen = "ConfirmedFeelingView"
                         self.selectedFeeling =  self.currentPageIndex
 
                         
@@ -96,12 +98,7 @@
                             .cornerRadius(32.0)
                             .padding(.bottom, 70)
                     }
-                )
-                .sheet(isPresented: $showConfirmedFeelingView) {
-                    ConfirmedFeelingView(selectedPause: $pause, selectedFeeling: $selectedFeeling)
-                }
-      
-                
+                )        
             }
             .background( //VStack
                 Image("bg-clouds")
@@ -171,8 +168,6 @@
                     .font(.custom("AvenirNext-Regular", size:17))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.black)
-//                    .padding(.top,30)
-//                    .frame(width: UIScreen.main.bounds.width*0.60, alignment: .center)
                 
                 Spacer()
                 
@@ -183,11 +178,3 @@
         }
         
     }
-
-    #if DEBUG
-//    struct FeelingView_Previews: PreviewProvider {
-//        static var previews: some View {
-//            FeelingView()
-//        }
-//    }
-    #endif

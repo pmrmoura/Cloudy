@@ -13,6 +13,7 @@ struct ConfirmedFeelingView: View {
     @State var confirmedFeelingView: Bool = false
     @Binding var selectedPause: PauseViewModel
     @Binding var selectedFeeling: Int
+    @Binding var currentScreen: String
     
     var images = ["energizado", "okay", "cansado"]
     
@@ -95,10 +96,3 @@ struct ConfirmedFeelingView: View {
    
     
 }
-
-
-//struct ConfirmedFeelingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ConfirmedFeelingView()
-//    }
-//}

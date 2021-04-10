@@ -17,55 +17,64 @@ struct TimerView: View {
     @State var didLaunchBefore: Bool = false
     @State var timeConfirmed: Bool = false
     @Binding var pause: PauseViewModel
-    
+    @State var currentScreen: String = "Timer"
     @ObservedObject var countDownTimer = TimerViewModel()
+    @State var selectedFeeling: Int
 
     var body: some View {
-        VStack {
+    
+        if currentScreen == "Timer" {
+        
+            VStack {
             
-            HeaderTimerView(selectedPause: $pause, timerStarted: $didLaunchBefore, timeConfirmed: $timeConfirmed)
-            
-            Spacer()
+                HeaderTimerView(selectedPause: $pause, timerStarted: $didLaunchBefore, timeConfirmed: $timeConfirmed)
+                
+                Spacer()
 
-            if (!timeConfirmed && !didLaunchBefore) {
-                
-                Picker("", selection: $minSelected){
-             
-                    ForEach(1..<60, id: \.self) { i in
-                        Text("\(i) min").tag(i)
+                if (!timeConfirmed && !didLaunchBefore)  {
+                    
+                    Picker("", selection: $minSelected){
+                 
+                        ForEach(1..<60, id: \.self) { i in
+                            Text("\(i) min").tag(i)
+                        }
                     }
-                }
-                .pickerStyle(WheelPickerStyle())
-                .padding(.top, 10)
-                .frame(width: 100, height: 100, alignment: .center)
-                Spacer()
-                Button {
-                    self.countDownTimer.minutes = minSelected
-                    self.timeConfirmed.toggle()
-                } label: {
-                    Text("Confirmar")
-                        .font(Font.custom("AvenirNext-Regular", size: 18))
-                        .frame(width: 110, height: 45)
-                        .foregroundColor(.black)
-                        .background(Image("bg-button"))
-                        .cornerRadius(32.0)
+                    .pickerStyle(WheelPickerStyle())
+                    .padding(.top, 10)
+                    .frame(width: 100, height: 100, alignment: .center)
+                    Spacer()
+                    Button {
+                        self.countDownTimer.minutes = minSelected
+                        self.timeConfirmed.toggle()
+                    } label: {
+                        Text("Confirmar")
+                            .font(Font.custom("AvenirNext-Regular", size: 18))
+                            .frame(width: 110, height: 45)
+                            .foregroundColor(.black)
+                            .background(Image("bg-button"))
+                            .cornerRadius(32.0)
+                    }
+                    
+                    Spacer()
+                    
+                } else {
+                    TimerCountDown(countDownTimer: self.countDownTimer, haveILaunched: $didLaunchBefore, pauseList: $pause, currentScreen: $currentScreen)
+                    Spacer()
                 }
                 
-                Spacer()
-                
-            } else {
-                TimerCountDown(countDownTimer: self.countDownTimer, haveILaunched: $didLaunchBefore, pauseList: $pause)
-                Spacer()
-            }
-            
         }.background( //VStack
             Image("bg-clouds")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.top)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-   
-        )
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        
+        }
+        else if (currentScreen == "FeelingView") {
+            FeelingView(pause: $pause, selectedFeeling: $selectedFeeling, currentScreen: $currentScreen)
+        } else if (currentScreen == "ConfirmedFeelingView") {
+           ConfirmedFeelingView(selectedPause: $pause, selectedFeeling: $selectedFeeling, currentScreen: $currentScreen)
+        }
     }
 }
 
@@ -134,19 +143,22 @@ struct HeaderTimerView: View {
 
 struct TimerCountDown: View {
     
-    @State private var showFeelingView = false
+  
     @ObservedObject var countDownTimer:TimerViewModel
     @Binding var pauseList: PauseViewModel
     @Binding var haveILaunched: Bool
     @State var buttonName: String = "INICIAR"
     @Environment(\.presentationMode) var presentationMode:  Binding<PresentationMode>
+    @Binding var currentScreen: String
     let notifications: Notifications
     
-    init(countDownTimer:TimerViewModel, haveILaunched: Binding<Bool>, pauseList: Binding<PauseViewModel>) {
+    
+    init(countDownTimer:TimerViewModel, haveILaunched: Binding<Bool>, pauseList: Binding<PauseViewModel>, currentScreen: Binding<String>) {
         self.countDownTimer = countDownTimer
         self._haveILaunched = haveILaunched
         self._pauseList = pauseList
         self.notifications = Notifications(initialMinutes: countDownTimer.minutes)
+        self._currentScreen = currentScreen
 
     }
     
@@ -171,7 +183,7 @@ struct TimerCountDown: View {
                     } else if buttonName == "CONCLUIR"{
                         self.notifications.deleteNotification()
                         self.countDownTimer.stopTimer()
-                        self.showFeelingView = true
+                        self.currentScreen = "FeelingView"
                         
                     } else {
                         self.notifications.deleteNotification()
@@ -189,7 +201,7 @@ struct TimerCountDown: View {
                         .cornerRadius(32.0)
                 }
             )
-            .sheet(isPresented: $showFeelingView) {FeelingView(pause: $pauseList)}
+
             
             Spacer()
         }
@@ -198,4 +210,3 @@ struct TimerCountDown: View {
         })
     }
 }
-

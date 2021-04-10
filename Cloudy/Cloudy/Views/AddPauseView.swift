@@ -43,17 +43,13 @@ struct AddPauseView: View {
                                 PauseItem(label: self.pauseListVM.pauses[idx].name)
                             })
                             .hideRowSeparator()
-                        
                     }
                     .onDelete(perform: delete(at:))
-                    
                 }
-            
-                
                 Spacer()
             }
             .sheet(isPresented: $showSheet, content: {
-                TimerView(pause: $selectedPause)
+                TimerView(pause: $selectedPause, selectedFeeling: 0)
             })
             
             ModalAnchorView()
@@ -69,8 +65,7 @@ struct AddPauseView: View {
         self.pauseListVM.removePause(at: index)
     }
         self.pauseListVM.fetchAllPauses()
-    }
-    
+    } 
 }
 
 
