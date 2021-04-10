@@ -73,9 +73,9 @@ struct SheetView: View {
                     } label: {
                         Text("SALVAR")
                             .font(Font.custom("AvenirNext-Regular", size: 18))
-                            .frame(width: 110, height: 45)
+                            .frame(width: 120, height: 45)
                             .foregroundColor(.black)
-                            .background(Color("ButtonColor"))
+                            .background(Image("bg-button").resizable().aspectRatio(contentMode: .fit))
                             .cornerRadius(32.0)
                     }
                     

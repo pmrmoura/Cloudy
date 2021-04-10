@@ -26,7 +26,7 @@
         @State var touchedButton = false
         
         var body: some View {
-            VStack(alignment: .center) {
+            VStack {
                 
                 HeaderFeelingView(selectedPause: $pause)
                 
@@ -92,9 +92,9 @@
                     label: {
                         Text("OK")
                             .font(Font.custom("AvenirNext-Regular", size: 18))
-                            .frame(width: 110, height: 45)
+                            .frame(width: 120, height: 45)
                             .foregroundColor(.black)
-                            .background(Image("bg-button"))
+                            .background(Image("bg-button").resizable().aspectRatio(contentMode: .fit))
                             .cornerRadius(32.0)
                             .padding(.bottom, 70)
                     }
@@ -150,7 +150,7 @@
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: UIScreen.main.bounds.width*0.07, height: UIScreen.main.bounds.height*0.07)
                         })
-                        .padding(.top, 70)
+                        .padding(.top, 50)
                     
                 }//HStack
                 .padding(.trailing, 20)
@@ -172,7 +172,7 @@
                 Spacer()
                 
             } //VStack
-            .frame(width: UIScreen.main.bounds.width, height: 105, alignment: .leading)
+            .frame(width: UIScreen.main.bounds.width, height: 135, alignment: .leading) 
             
                     
         }
