@@ -74,7 +74,7 @@ struct SheetView: View {
                         Text("SALVAR")
                             .font(Font.custom("AvenirNext-Regular", size: 18))
                             .frame(width: 110, height: 45)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .background(Color("ButtonColor"))
                             .cornerRadius(32.0)
                     }

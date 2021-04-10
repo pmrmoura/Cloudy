@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct AddPauseView: View {
+    
     @EnvironmentObject var modalManager: ModalManager
     @ObservedObject var pauseListVM = PauseListViewModel()
-    
 
     @State var text: String = ""
-//    @State var onDisappearFlag: false
-//    @State var pauses: [PauseViewModel] = []
     @State var showSheet: Bool = false
-    @State var selectedPause: PauseViewModel = PauseViewModel(id: UUID.init(), name: "Default", image: "Cloud1")
+    @State var selectedPause: PauseViewModel = PauseViewModel(id: UUID.init(), name: "Default", image: "01")
+    
     var body: some View {
         ZStack {
             VStack {
@@ -44,17 +43,13 @@ struct AddPauseView: View {
                                 PauseItem(label: self.pauseListVM.pauses[idx].name)
                             })
                             .hideRowSeparator()
-                        
                     }
                     .onDelete(perform: delete(at:))
-                    
                 }
-            
-                
                 Spacer()
             }
             .sheet(isPresented: $showSheet, content: {
-                TimerView(pause: $selectedPause)
+                TimerView(pause: $selectedPause, selectedFeeling: 0)
             })
             
             ModalAnchorView()
@@ -70,8 +65,7 @@ struct AddPauseView: View {
         self.pauseListVM.removePause(at: index)
     }
         self.pauseListVM.fetchAllPauses()
-    }
-    
+    } 
 }
 
 
@@ -100,10 +94,14 @@ struct Header: View {
 struct PauseItem: View {
     var isButton: Bool = false
     var label: String
+    var bgs = ["01","02","03","04"]
+    
     var body: some View {
         ZStack {
-            Image("Cloud1")
-                .opacity(isButton ? 0.6 : 1)
+            Image(bgs[Int.random(in: 0..<3)])
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+            
             VStack {
                 Spacer()
                 HStack {

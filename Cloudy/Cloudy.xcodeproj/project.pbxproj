@@ -11,6 +11,10 @@
 		175835C6260B7D4400FF5A62 /* AddPauseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175835C5260B7D4400FF5A62 /* AddPauseViewModel.swift */; };
 		175835C9260B7D7200FF5A62 /* PauseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175835C8260B7D7200FF5A62 /* PauseViewModel.swift */; };
 		175835CC260B7E0800FF5A62 /* PauseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175835CB260B7E0800FF5A62 /* PauseListViewModel.swift */; };
+		17770232261DF75800CED943 /* Subview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17770231261DF75800CED943 /* Subview.swift */; };
+		17770235261DF78200CED943 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17770234261DF78200CED943 /* PageViewController.swift */; };
+		17770238261DF80C00CED943 /* FeelingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17770237261DF80C00CED943 /* FeelingView.swift */; };
+		1786846C261F449000EB96ED /* ConfirmedFeelingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1786846B261F449000EB96ED /* ConfirmedFeelingView.swift */; };
 		C105B9A125FA4AC200B9409A /* AddPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C105B9A025FA4AC200B9409A /* AddPauseView.swift */; };
 		C119F48526002DAC0057C9D1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F48426002DAC0057C9D1 /* Model.swift */; };
 		C119F48826002DD00057C9D1 /* AnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F48726002DD00057C9D1 /* AnchorView.swift */; };
@@ -35,6 +39,10 @@
 		175835C5260B7D4400FF5A62 /* AddPauseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPauseViewModel.swift; sourceTree = "<group>"; };
 		175835C8260B7D7200FF5A62 /* PauseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewModel.swift; sourceTree = "<group>"; };
 		175835CB260B7E0800FF5A62 /* PauseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseListViewModel.swift; sourceTree = "<group>"; };
+		17770231261DF75800CED943 /* Subview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subview.swift; sourceTree = "<group>"; };
+		17770234261DF78200CED943 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		17770237261DF80C00CED943 /* FeelingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingView.swift; sourceTree = "<group>"; };
+		1786846B261F449000EB96ED /* ConfirmedFeelingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedFeelingView.swift; sourceTree = "<group>"; };
 		C105B9A025FA4AC200B9409A /* AddPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPauseView.swift; sourceTree = "<group>"; };
 		C119F48426002DAC0057C9D1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C119F48726002DD00057C9D1 /* AnchorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorView.swift; sourceTree = "<group>"; };
@@ -82,6 +90,9 @@
 				C105B9A025FA4AC200B9409A /* AddPauseView.swift */,
 				C119F4952600EDFF0057C9D1 /* SheetView.swift */,
 				C119F49C2600F48C0057C9D1 /* TimerSheetView.swift */,
+				17770231261DF75800CED943 /* Subview.swift */,
+				17770237261DF80C00CED943 /* FeelingView.swift */,
+				1786846B261F449000EB96ED /* ConfirmedFeelingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -103,6 +114,7 @@
 			children = (
 				C1A2B73625FA59AD00B6D21A /* Pause.swift */,
 				C1BE995026037D0F00326C8C /* Notifications.swift */,
+				17770234261DF78200CED943 /* PageViewController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,6 +251,7 @@
 				C119F48826002DD00057C9D1 /* AnchorView.swift in Sources */,
 				C119F48B26002DEA0057C9D1 /* ModalManager.swift in Sources */,
 				C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */,
+				17770232261DF75800CED943 /* Subview.swift in Sources */,
 				175835C6260B7D4400FF5A62 /* AddPauseViewModel.swift in Sources */,
 				C119F49D2600F48C0057C9D1 /* TimerSheetView.swift in Sources */,
 				C1BE995126037D0F00326C8C /* Notifications.swift in Sources */,
@@ -248,10 +261,13 @@
 				C119F4962600EDFF0057C9D1 /* SheetView.swift in Sources */,
 				C119F492260035100057C9D1 /* KeyboardHelper.swift in Sources */,
 				C1A8AB4925FA46C7003BEC5B /* AppDelegate.swift in Sources */,
+				17770235261DF78200CED943 /* PageViewController.swift in Sources */,
 				C1A8AB4B25FA46C7003BEC5B /* SceneDelegate.swift in Sources */,
 				C1A8AB5025FA46C7003BEC5B /* Cloudy.xcdatamodeld in Sources */,
 				175835C9260B7D7200FF5A62 /* PauseViewModel.swift in Sources */,
+				17770238261DF80C00CED943 /* FeelingView.swift in Sources */,
 				C105B9A125FA4AC200B9409A /* AddPauseView.swift in Sources */,
+				1786846C261F449000EB96ED /* ConfirmedFeelingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
