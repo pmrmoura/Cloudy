@@ -23,7 +23,6 @@
 		C119F492260035100057C9D1 /* KeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F491260035100057C9D1 /* KeyboardHelper.swift */; };
 		C119F4962600EDFF0057C9D1 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F4952600EDFF0057C9D1 /* SheetView.swift */; };
 		C119F49D2600F48C0057C9D1 /* TimerSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119F49C2600F48C0057C9D1 /* TimerSheetView.swift */; };
-		C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2B73625FA59AD00B6D21A /* Pause.swift */; };
 		C1A8AB4925FA46C7003BEC5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A8AB4825FA46C7003BEC5B /* AppDelegate.swift */; };
 		C1A8AB4B25FA46C7003BEC5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A8AB4A25FA46C7003BEC5B /* SceneDelegate.swift */; };
 		C1A8AB5025FA46C7003BEC5B /* Cloudy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1A8AB4E25FA46C7003BEC5B /* Cloudy.xcdatamodeld */; };
@@ -51,7 +50,6 @@
 		C119F491260035100057C9D1 /* KeyboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHelper.swift; sourceTree = "<group>"; };
 		C119F4952600EDFF0057C9D1 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		C119F49C2600F48C0057C9D1 /* TimerSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSheetView.swift; sourceTree = "<group>"; };
-		C1A2B73625FA59AD00B6D21A /* Pause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
 		C1A8AB4525FA46C7003BEC5B /* Cloudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cloudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A8AB4825FA46C7003BEC5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1A8AB4A25FA46C7003BEC5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 		C1A2B73A25FA59BB00B6D21A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C1A2B73625FA59AD00B6D21A /* Pause.swift */,
 				C1BE995026037D0F00326C8C /* Notifications.swift */,
 				17770234261DF78200CED943 /* PageViewController.swift */,
 			);
@@ -250,7 +247,6 @@
 				175835C2260B7BF400FF5A62 /* DataManager.swift in Sources */,
 				C119F48826002DD00057C9D1 /* AnchorView.swift in Sources */,
 				C119F48B26002DEA0057C9D1 /* ModalManager.swift in Sources */,
-				C1A2B73725FA59AD00B6D21A /* Pause.swift in Sources */,
 				17770232261DF75800CED943 /* Subview.swift in Sources */,
 				175835C6260B7D4400FF5A62 /* AddPauseViewModel.swift in Sources */,
 				C119F49D2600F48C0057C9D1 /* TimerSheetView.swift in Sources */,
