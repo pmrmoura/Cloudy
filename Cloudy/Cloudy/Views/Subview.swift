@@ -25,6 +25,13 @@ struct Subview: View {
 struct Subview_Previews: PreviewProvider {
     static var previews: some View {
         Subview(imageString: "okay")
+            .previewDevice("iPhone SE (2nd generation)")
+        Subview(imageString: "okay")
+            .previewDevice("iPhone 11")
+        Subview(imageString: "okay")
+            .previewDevice("iPhone 8")
+        Subview(imageString: "okay")
+            .previewDevice("iPhone 11 Pro")
     }
 }
 #endif
