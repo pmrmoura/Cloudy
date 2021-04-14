@@ -53,7 +53,7 @@ struct SheetView: View {
                         Rectangle()
                             .frame(width: 250, height: 2)
                             .padding(.top, 35)
-                            .foregroundColor(Color("TextFieldBorderColor"))
+                            .foregroundColor(Color(.black))
                     )
                     .frame(width: 250, height: 32)
                     .disableAutocorrection(true)

@@ -17,8 +17,8 @@
         
         var subviews = [
             UIHostingController(rootView: Subview(imageString: "energizado")),
-            UIHostingController(rootView: Subview(imageString: "energizado")), //okay
-            UIHostingController(rootView: Subview(imageString: "energizado")) //cansado
+            UIHostingController(rootView: Subview(imageString: "okay")), //okay
+            UIHostingController(rootView: Subview(imageString: "cansado")) //cansado
         ]
         var titles = ["energizado", "okay", "cansado"]
         

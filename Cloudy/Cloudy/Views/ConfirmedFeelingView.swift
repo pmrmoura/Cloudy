@@ -58,7 +58,7 @@ struct ConfirmedFeelingView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.black)
                     .padding(20)
-                    .frame(width: UIScreen.main.bounds.width, alignment: .center)
+                    .frame(width: UIScreen.main.bounds.width*0.6, alignment: .center)
                 
                 Spacer()
                 

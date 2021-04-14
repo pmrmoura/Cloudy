@@ -31,7 +31,7 @@ struct ModalView: View {
                     }
                 ZStack(alignment: .top) {
                     LinearGradient(gradient:
-                                    Gradient(colors: [Color("PopUpBackground"), Color("PopUpBackground2")]),
+                                    Gradient(colors: [Color("PopUpBackground1"), Color("PopUpBackground2"),Color("PopUpBackground3")]),
                                    startPoint: .topLeading,
                                    endPoint: .bottomLeading)
                         .edgesIgnoringSafeArea(.all)

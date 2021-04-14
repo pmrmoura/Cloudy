@@ -120,14 +120,14 @@ struct HeaderTimerView: View {
             Text("\(selectedPause.name)")
                 .font(.custom("AvenirNext-Regular", size:30))
                 .foregroundColor(Color.black) //aqui pode pegar a cor do figma e colocar o nome
-                .padding(.leading, 40)
+                .padding(.leading, -UIScreen.main.bounds.width*0.3)
                 .padding(.bottom, 20)
-                .frame(width: UIScreen.main.bounds.width, alignment: .leading)
+                .frame(width: UIScreen.main.bounds.width, alignment: .center)
             
             Spacer()
    
             } //VStack
-            .frame(width: UIScreen.main.bounds.width, height: 105, alignment: .leading)
+            .frame(width: UIScreen.main.bounds.width, height: 105, alignment: .center)
                 
             
         Text(timerStarted ? timerStartedText : (timeConfirmed ? "Seu tempo de pausa é" : timerNotStartedText))

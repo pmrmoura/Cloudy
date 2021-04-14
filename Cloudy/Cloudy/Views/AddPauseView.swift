@@ -18,7 +18,7 @@ struct AddPauseView: View {
     
     var body: some View {
         ZStack {
-            VStack {
+            VStack (alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
                 Header()
                 List {
                     Button (
