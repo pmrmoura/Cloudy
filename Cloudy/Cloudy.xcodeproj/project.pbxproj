@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		172DF8CA262F0C3C0064AA80 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172DF8C9262F0C3C0064AA80 /* WidgetKit.framework */; };
+		172DF8CC262F0C3C0064AA80 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172DF8CB262F0C3C0064AA80 /* SwiftUI.framework */; };
+		172DF8CF262F0C3C0064AA80 /* CloudyWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172DF8CE262F0C3C0064AA80 /* CloudyWidget.swift */; };
+		172DF8D1262F0C3D0064AA80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 172DF8D0262F0C3D0064AA80 /* Assets.xcassets */; };
+		172DF8D5262F0C3D0064AA80 /* CloudyWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 172DF8C7262F0C3C0064AA80 /* CloudyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		175835C2260B7BF400FF5A62 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175835C1260B7BF400FF5A62 /* DataManager.swift */; };
 		175835C6260B7D4400FF5A62 /* AddPauseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175835C5260B7D4400FF5A62 /* AddPauseViewModel.swift */; };
 		175835C9260B7D7200FF5A62 /* PauseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175835C8260B7D7200FF5A62 /* PauseViewModel.swift */; };
@@ -33,7 +38,37 @@
 		C1BE995426040B4100326C8C /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BE995326040B4100326C8C /* TimerViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		172DF8D3262F0C3D0064AA80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1A8AB3D25FA46C7003BEC5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 172DF8C6262F0C3C0064AA80;
+			remoteInfo = CloudyWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		172DF8D6262F0C3D0064AA80 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				172DF8D5262F0C3D0064AA80 /* CloudyWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		172DF8C7262F0C3C0064AA80 /* CloudyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CloudyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		172DF8C9262F0C3C0064AA80 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		172DF8CB262F0C3C0064AA80 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		172DF8CE262F0C3C0064AA80 /* CloudyWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyWidget.swift; sourceTree = "<group>"; };
+		172DF8D0262F0C3D0064AA80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		172DF8D2262F0C3D0064AA80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		175835C1260B7BF400FF5A62 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		175835C5260B7D4400FF5A62 /* AddPauseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPauseViewModel.swift; sourceTree = "<group>"; };
 		175835C8260B7D7200FF5A62 /* PauseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewModel.swift; sourceTree = "<group>"; };
@@ -63,6 +98,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		172DF8C4262F0C3C0064AA80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172DF8CC262F0C3C0064AA80 /* SwiftUI.framework in Frameworks */,
+				172DF8CA262F0C3C0064AA80 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1A8AB4225FA46C7003BEC5B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,6 +117,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		172DF8C8262F0C3C0064AA80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				172DF8C9262F0C3C0064AA80 /* WidgetKit.framework */,
+				172DF8CB262F0C3C0064AA80 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		172DF8CD262F0C3C0064AA80 /* CloudyWidget */ = {
+			isa = PBXGroup;
+			children = (
+				172DF8CE262F0C3C0064AA80 /* CloudyWidget.swift */,
+				172DF8D0262F0C3D0064AA80 /* Assets.xcassets */,
+				172DF8D2262F0C3D0064AA80 /* Info.plist */,
+			);
+			path = CloudyWidget;
+			sourceTree = "<group>";
+		};
 		175835C0260B7BDD00FF5A62 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				C1A8AB4725FA46C7003BEC5B /* Cloudy */,
+				172DF8CD262F0C3C0064AA80 /* CloudyWidget */,
+				172DF8C8262F0C3C0064AA80 /* Frameworks */,
 				C1A8AB4625FA46C7003BEC5B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -128,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				C1A8AB4525FA46C7003BEC5B /* Cloudy.app */,
+				172DF8C7262F0C3C0064AA80 /* CloudyWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,6 +238,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		172DF8C6262F0C3C0064AA80 /* CloudyWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 172DF8D9262F0C3D0064AA80 /* Build configuration list for PBXNativeTarget "CloudyWidgetExtension" */;
+			buildPhases = (
+				172DF8C3262F0C3C0064AA80 /* Sources */,
+				172DF8C4262F0C3C0064AA80 /* Frameworks */,
+				172DF8C5262F0C3C0064AA80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CloudyWidgetExtension;
+			productName = CloudyWidgetExtension;
+			productReference = 172DF8C7262F0C3C0064AA80 /* CloudyWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C1A8AB4425FA46C7003BEC5B /* Cloudy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1A8AB5C25FA46C8003BEC5B /* Build configuration list for PBXNativeTarget "Cloudy" */;
@@ -179,10 +262,12 @@
 				C1A8AB4125FA46C7003BEC5B /* Sources */,
 				C1A8AB4225FA46C7003BEC5B /* Frameworks */,
 				C1A8AB4325FA46C7003BEC5B /* Resources */,
+				172DF8D6262F0C3D0064AA80 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				172DF8D4262F0C3D0064AA80 /* PBXTargetDependency */,
 			);
 			name = Cloudy;
 			packageProductDependencies = (
@@ -200,6 +285,9 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					172DF8C6262F0C3C0064AA80 = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					C1A8AB4425FA46C7003BEC5B = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -221,11 +309,20 @@
 			projectRoot = "";
 			targets = (
 				C1A8AB4425FA46C7003BEC5B /* Cloudy */,
+				172DF8C6262F0C3C0064AA80 /* CloudyWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		172DF8C5262F0C3C0064AA80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172DF8D1262F0C3D0064AA80 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1A8AB4325FA46C7003BEC5B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,6 +336,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		172DF8C3262F0C3C0064AA80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				172DF8CF262F0C3C0064AA80 /* CloudyWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1A8AB4125FA46C7003BEC5B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +374,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		172DF8D4262F0C3D0064AA80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 172DF8C6262F0C3C0064AA80 /* CloudyWidgetExtension */;
+			targetProxy = 172DF8D3262F0C3D0064AA80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		C1A8AB5625FA46C8003BEC5B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -281,6 +394,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		172DF8D7262F0C3D0064AA80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2QC8C374PG;
+				INFOPLIST_FILE = CloudyWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.br.academy.CloudyApp.CloudyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		172DF8D8262F0C3D0064AA80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2QC8C374PG;
+				INFOPLIST_FILE = CloudyWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.br.academy.CloudyApp.CloudyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C1A8AB5A25FA46C8003BEC5B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -400,6 +555,7 @@
 		C1A8AB5D25FA46C8003BEC5B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -423,6 +579,7 @@
 		C1A8AB5E25FA46C8003BEC5B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -446,6 +603,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		172DF8D9262F0C3D0064AA80 /* Build configuration list for PBXNativeTarget "CloudyWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				172DF8D7262F0C3D0064AA80 /* Debug */,
+				172DF8D8262F0C3D0064AA80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C1A8AB4025FA46C7003BEC5B /* Build configuration list for PBXProject "Cloudy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
